@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
         nextButton.addEventListener('click', ()=> {
-            console.log("Working")
+
             hourlyDiv.scrollLeft += 1400;
         });
 

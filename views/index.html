@@ -13,10 +13,14 @@
 </head>
 
 <body>
-    <!--Background Image-->
-    <div class="absolute inset-0">
+    <!--Background Image
+    <div class="absolute inset-0 bg-repeat">
         <img src="../images/rosebg.jpg" alt="Rose Background" class="w-full object-cover h-screen">
     </div>
+-->
+    <div class="absolute inset-0 bg-cover h-max bg-repeat" style="background-image: url('../images/rosebg.jpg');">
+
+    
 
     <!--Top Bar-->
     <section class="bg-rose-900 p-1 flex justify-end text-rose-500 pr-5 z-10 relative">
@@ -41,7 +45,7 @@
 
 
     <!--BODY-->
-    <section class="relative flex flex-wrap justify-center space-x-36 text-white">
+    <section class="relative flex flex-wrap justify-center space-x-36 text-white my-10">
 
         <div class="bg-rose-950 px-20 py-20 mt-52 z-10 rounded-3xl relative text-rose-700 text-5xl font-bold" id="curDate">
             
@@ -49,6 +53,8 @@
         <div class="bg-rose-950 px-20 py-20 mt-52 z-10 rounded-3xl relative text-rose-700 text-5xl font-bold" id="homeTemp"></div>
 
     </section>
+
+</div>
 </body>
 
 </html>
