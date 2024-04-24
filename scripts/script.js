@@ -99,18 +99,23 @@ document.addEventListener('DOMContentLoaded', function () {
         })
 
     let display = false;
+    let dropdownMenu = document.getElementById('dropdown');
 
-    document.addEventListener('click', function () {
+    document.getElementById('menuToggle').addEventListener('click', dropdown);
 
-
+    function dropdown() {
         if (display == false) {
-            document.getElementById('dropdown').classList.remove('hidden');
+            dropdownMenu.classList.remove('hidden');
         } else {
-            document.getElementById('dropdown').classList.add('hidden');
+            dropdownMenu.classList.add('hidden');
         }
         display = !display;
-    })
+    }
 
+    if (window.innerWidth < 768) {
+        dropdownMenu.classList.add('hidden');
+        display = false;
+    }
 
 
 });
