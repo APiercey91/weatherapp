@@ -98,8 +98,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
         })
 
+    let display = false;
+
+    document.addEventListener('click', function () {
 
 
-       
+        if (display == false) {
+            document.getElementById('dropdown').classList.remove('hidden');
+        } else {
+            document.getElementById('dropdown').classList.add('hidden');
+        }
+        display = !display;
+    })
+
+
 
 });
