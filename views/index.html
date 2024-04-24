@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="../scripts/tailConfig.js"></script>
+    <script src="./tailwind.config.js"></script>
     <script src="../scripts/script.js"></script>
     <link rel="stylesheet" href="../styles/styles.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
@@ -31,7 +31,7 @@
 
     <!--HEADER-->
 <section class="bg-rose-950 p-8 md:p-16 relative flex flex-wrap">
-    <h1 class="text-rose-700 font-bold text-3xl md:text-6xl top-2 md:top-4 left-2 md:left-4 absolute sm:text-3xl ">Weather</h1>
+    <h1 class="text-rose-700 font-bold lg:text-3xl md:text-6xl top-2 md:top-4 left-2 md:left-4 absolute sm:text-5xl ">Weather</h1>
     <div class="lg:hidden absolute top-2 right-2">
         <button id="menuToggle" class="text-rose-700 focus:outline-none">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20" fill="currentColor">
@@ -67,8 +67,8 @@
     </div>
 
     
-    <ul id="menu" class="sm:hidden md:flex list-none text-rose-700 text-xl md:text-md absolute bottom-2 md:bottom-2 left-0 right-0 flex flex-wrap justify-center">
-        <li class="mx-3 md:mx-10 my-2 md:my-0 text-rose-950 bg-rose-900 duration-300 p-2 md:p-4 rounded-3xl">
+    <ul id="menu" class="sm:hidden md:hidden hidden lg:flex list-none text-rose-700 lg:text-3xl md:text-xl absolute bottom-2 md:bottom-2 left-0 right-0 flex-wrap justify-center">
+        <li class="mx-3 md:mx-10 my-2 md:my-0 text-rose-950 bg-rose-900 duration-300 p-2 md:p-4 rounded-3xl flex-shrink">
             <button>RIGHT NOW</button>
         </li>
         <li class="mx-3 md:mx-10 my-2 md:my-0 hover:bg-rose-900 duration-300 hover:text-black p-2 md:p-4 rounded-3xl">
