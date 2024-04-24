@@ -98,10 +98,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
         })
 
-    let display = false;
+   /* let display = false;
     let dropdownMenu = document.getElementById('dropdown');
 
-    document.getElementById('menuToggle').addEventListener('click', dropdown);
+    document.getElementById('menuToggle').addEventListener('mouseover', dropdown);
 
     function dropdown() {
         if (display == false) {
@@ -112,10 +112,30 @@ document.addEventListener('DOMContentLoaded', function () {
         display = !display;
     }
 
+    function updateDisplay() {
     if (window.innerWidth < 768) {
         dropdownMenu.classList.add('hidden');
         display = false;
     }
+    }
 
+    updateDisplay();
+    window.addEventListener('resize', updateDisplay());
+*/
+
+let dropdownMenu = document.getElementById('dropdown');
+
+document.getElementById('menuToggle').addEventListener('mouseenter', display);
+document.getElementById('dropdown').addEventListener('mouseenter', display);
+document.getElementById('menuToggle').addEventListener('mouseleave', dontDisplay);
+document.getElementById('dropdown').addEventListener('mouseleave', dontDisplay);
+
+function display() {
+    dropdownMenu.classList.remove('hidden');
+}
+
+function dontDisplay() {
+    dropdownMenu.classList.add('hidden');
+}
 
 });
