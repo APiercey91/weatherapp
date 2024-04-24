@@ -29,25 +29,10 @@
     </section>
 
 
-    <!--HEADER
-    <section class="bg-rose-950 p-16 relative flex flex-wrap">
-        <h1 class="text-rose-700 font-bold text-5xl top-2 left-2 absolute">Weather</h1>
-        <ul class="list-none text-rose-700 text-3xl absolute bottom-2 left-0 right-0 flex flex-wrap justify-center">
-            <li class="mx-10 text-rose-950 bg-rose-900 duration-300 p-4 rounded-3xl"><button>RIGHT NOW</button>
-            </li>
-            <li class="mx-10 hover:bg-rose-900 duration-300 hover:text-black p-4 rounded-3xl"><button onclick="window.location.href='./3hourly.html'">3 HOURS</button></li>
-            <li class="mx-10 hover:bg-rose-900 duration-300 hover:text-black p-4 rounded-3xl"><button>36 HOURS</button>
-            </li>
-            <li class="mx-10 hover:bg-rose-900 duration-300 hover:text-black p-4 rounded-3xl"><button onclick="window.location.href='./fivedays.html'">5 DAYS</button></li>
-        </ul>
-
-    </section>
--->
-
-
+    <!--HEADER-->
 <section class="bg-rose-950 p-8 md:p-16 relative flex flex-wrap">
-    <h1 class="text-rose-700 font-bold text-3xl md:text-3xl top-2 md:top-4 left-2 md:left-4 absolute sm:text-3xl ">Weather</h1>
-    <div class="md:hidden absolute top-2 right-2">
+    <h1 class="text-rose-700 font-bold text-3xl md:text-6xl top-2 md:top-4 left-2 md:left-4 absolute sm:text-3xl ">Weather</h1>
+    <div class="lg:hidden absolute top-2 right-2">
         <button id="menuToggle" class="text-rose-700 focus:outline-none">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20" fill="currentColor">
                 <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 9a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 13a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" />
@@ -55,7 +40,7 @@
         </button>
     </div>
 
-    <!--DROPDOWN MENU-->
+    <!--DROPDOWN MENU
     <ul class="lg:hidden md:hidden flex block">
         <li class="mx-3 md:mx-10 my-2 md:my-0 text-rose-950 bg-rose-900 duration-300 p-2 md:p-4 rounded-3xl">
             <button>RIGHT NOW</button>
@@ -70,7 +55,18 @@
             <button onclick="window.location.href='./fivedays.html'">5 DAYS</button>
         </li>
     </ul>
+-->
+<div class="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+    <div class="py-1 hidden" role="none" id="dropdown">
+      <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
+      <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-0">Account settings</a>
+      <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-1">Support</a>
+      <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-2">License</a>
+    
+    </div>
+    </div>
 
+    
     <ul id="menu" class="sm:hidden md:flex list-none text-rose-700 text-xl md:text-md absolute bottom-2 md:bottom-2 left-0 right-0 flex flex-wrap justify-center">
         <li class="mx-3 md:mx-10 my-2 md:my-0 text-rose-950 bg-rose-900 duration-300 p-2 md:p-4 rounded-3xl">
             <button>RIGHT NOW</button>
@@ -85,6 +81,7 @@
             <button onclick="window.location.href='./fivedays.html'">5 DAYS</button>
         </li>
     </ul>
+
 </section>
 
     <!--BODY-->

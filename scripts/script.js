@@ -100,19 +100,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-        const menuToggle = document.getElementById('menuToggle');
-        const menu = document.getElementById('menu');
-        let toggle = true;
-
-        menuToggle.addEventListener('click', () => {
-            if (toggle == true) {
-                menu.classList.remove('hidden');
-                toggle = false;
-            } else {
-                menu.classList.add('hidden');
-                toggle = true;
-            }
-        });
-  
+       
 
 });
