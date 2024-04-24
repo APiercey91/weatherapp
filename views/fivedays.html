@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="../scripts/tailConfig.js"></script>
-    <script src="../scripts/script.js"></script>
+    <script src="../scripts/fivedays.js"></script>
     <link rel="stylesheet" href="../styles/styles.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <title>Weather</title>
@@ -33,12 +33,12 @@
     <section class="bg-rose-950 p-16 relative flex flex-wrap">
         <h1 class="text-rose-700 font-bold text-5xl top-2 left-2 absolute">Weather</h1>
         <ul class="list-none text-rose-700 text-3xl absolute bottom-2 left-0 right-0 flex flex-wrap justify-center">
-            <li class="mx-10 text-rose-950 bg-rose-900 duration-300 p-4 rounded-3xl"><button>RIGHT NOW</button>
+            <li class="mx-10 hover:bg-rose-900 duration-300 hover:text-black p-4 rounded-3xl"><button onclick="window.location.href='./index.html'">RIGHT NOW</button>
             </li>
             <li class="mx-10 hover:bg-rose-900 duration-300 hover:text-black p-4 rounded-3xl"><button onclick="window.location.href='./3hourly.html'">3 HOURS</button></li>
             <li class="mx-10 hover:bg-rose-900 duration-300 hover:text-black p-4 rounded-3xl"><button>36 HOURS</button>
             </li>
-            <li class="mx-10 hover:bg-rose-900 duration-300 hover:text-black p-4 rounded-3xl"><button onclick="window.location.href='./fivedays.html'">5 DAYS</button></li>
+            <li class="mx-10 text-rose-950 bg-rose-900 duration-300 p-4 rounded-3xl"><button>5 DAYS</button></li>
         </ul>
 
     </section>
@@ -47,10 +47,6 @@
     <!--BODY-->
     <section class="relative flex flex-wrap justify-center space-x-36 text-white my-10">
 
-        <div class="bg-rose-950 px-20 py-20 mt-52 z-10 rounded-3xl relative text-rose-700 text-5xl font-bold" id="curDate">
-            
-        </div>
-        <div class="bg-rose-950 px-20 py-20 mt-52 z-10 rounded-3xl relative text-rose-700 text-5xl font-bold" id="homeTemp"></div>
 
     </section>
 
