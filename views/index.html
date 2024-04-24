@@ -12,13 +12,13 @@
     <title>Weather</title>
 </head>
 
-<body>
+<body class="bg-rose-900">
     <!--Background Image
     <div class="absolute inset-0 bg-repeat">
         <img src="../images/rosebg.jpg" alt="Rose Background" class="w-full object-cover h-screen">
     </div>
 -->
-    <div class="absolute inset-0 bg-cover h-max bg-repeat" style="background-image: url('../images/rosebg.jpg');">
+    <div class="relative inset-0 bg-cover h-screen bg-repeat" style="background-image: url('../images/rosebg.jpg');">
 
     
 
@@ -29,7 +29,7 @@
     </section>
 
 
-    <!--HEADER-->
+    <!--HEADER
     <section class="bg-rose-950 p-16 relative flex flex-wrap">
         <h1 class="text-rose-700 font-bold text-5xl top-2 left-2 absolute">Weather</h1>
         <ul class="list-none text-rose-700 text-3xl absolute bottom-2 left-0 right-0 flex flex-wrap justify-center">
@@ -42,15 +42,58 @@
         </ul>
 
     </section>
+-->
 
+
+<section class="bg-rose-950 p-8 md:p-16 relative flex flex-wrap">
+    <h1 class="text-rose-700 font-bold text-3xl md:text-3xl top-2 md:top-4 left-2 md:left-4 absolute sm:text-3xl ">Weather</h1>
+    <div class="md:hidden absolute top-2 right-2">
+        <button id="menuToggle" class="text-rose-700 focus:outline-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 9a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 13a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" />
+            </svg>
+        </button>
+    </div>
+
+    <!--DROPDOWN MENU-->
+    <ul class="lg:hidden md:hidden flex block">
+        <li class="mx-3 md:mx-10 my-2 md:my-0 text-rose-950 bg-rose-900 duration-300 p-2 md:p-4 rounded-3xl">
+            <button>RIGHT NOW</button>
+        </li>
+        <li class="mx-3 md:mx-10 my-2 md:my-0 hover:bg-rose-900 duration-300 hover:text-black p-2 md:p-4 rounded-3xl">
+            <button onclick="window.location.href='./3hourly.html'">3 HOURS</button>
+        </li>
+        <li class="mx-3 md:mx-10 my-2 md:my-0 hover:bg-rose-900 duration-300 hover:text-black p-2 md:p-4 rounded-3xl">
+            <button>36 HOURS</button>
+        </li>
+        <li class="mx-3 md:mx-10 my-2 md:my-0 hover:bg-rose-900 duration-300 hover:text-black p-2 md:p-4 rounded-3xl">
+            <button onclick="window.location.href='./fivedays.html'">5 DAYS</button>
+        </li>
+    </ul>
+
+    <ul id="menu" class="sm:hidden md:flex list-none text-rose-700 text-xl md:text-md absolute bottom-2 md:bottom-2 left-0 right-0 flex flex-wrap justify-center">
+        <li class="mx-3 md:mx-10 my-2 md:my-0 text-rose-950 bg-rose-900 duration-300 p-2 md:p-4 rounded-3xl">
+            <button>RIGHT NOW</button>
+        </li>
+        <li class="mx-3 md:mx-10 my-2 md:my-0 hover:bg-rose-900 duration-300 hover:text-black p-2 md:p-4 rounded-3xl">
+            <button onclick="window.location.href='./3hourly.html'">3 HOURS</button>
+        </li>
+        <li class="mx-3 md:mx-10 my-2 md:my-0 hover:bg-rose-900 duration-300 hover:text-black p-2 md:p-4 rounded-3xl">
+            <button>36 HOURS</button>
+        </li>
+        <li class="mx-3 md:mx-10 my-2 md:my-0 hover:bg-rose-900 duration-300 hover:text-black p-2 md:p-4 rounded-3xl">
+            <button onclick="window.location.href='./fivedays.html'">5 DAYS</button>
+        </li>
+    </ul>
+</section>
 
     <!--BODY-->
     <section class="relative flex flex-wrap justify-center space-x-36 text-white my-10">
 
-        <div class="bg-rose-950 px-20 py-20 mt-52 z-10 rounded-3xl relative text-rose-700 text-5xl font-bold" id="curDate">
+        <div class="bg-rose-950 px-20 py-20 mt-52 z-10 rounded-3xl relative text-rose-700 text-5xl font-bold flex-shrink" id="curDate">
             
         </div>
-        <div class="bg-rose-950 px-20 py-20 mt-52 z-10 rounded-3xl relative text-rose-700 text-5xl font-bold" id="homeTemp"></div>
+        <div class="bg-rose-950 px-20 py-20 mt-52 z-10 rounded-3xl relative text-rose-700 text-5xl font-bold flex-shrink" id="homeTemp"></div>
 
     </section>
 
