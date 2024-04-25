@@ -1,4 +1,4 @@
-module.exports = {
+const config = {
     theme: {
       screens: {
         'sm': '500px',
@@ -8,4 +8,6 @@ module.exports = {
         '2xl': '1536px',
       },
     },
-  }
+  };
+
+  
