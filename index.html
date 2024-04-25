@@ -7,24 +7,25 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="./tailwind.config.js"></script>
     <script src="./scripts/script.js"></script>
-    <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="stylesheet" href="./styles/styles.css">
+    <link rel="website icon" type="jpg" href="./images/icon1.jpg">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <title>Weather</title>
 </head>
 
 <body class="relative inset-0 h-screen bg-repeat bg-cover" style="background-image: url('./images/rosebg.jpg');">
-    <div>
-
+    
+ 
         <!--Top Bar-->
         <section class="relative z-10 flex justify-end p-1 pr-5 bg-rose-900 text-rose-500">
-            <button class="mx-5">C&deg;</button>
-            <button class="mx-5">F&deg;</button>
+            <button class="mx-5 hover:text-rose-950">C&deg;</button>
+            <button class="mx-5 hover:text-rose-950">F&deg;</button>
         </section>
 
 
         <!--------------------------------------------------HEADER-------------------------------------------------->
         <section class="relative flex flex-wrap p-12 bg-rose-950 md:p-16">
-            <h1 class="absolute text-6xl font-bold text-rose-700 lg:text-4xl md:text-6xl top-2 md:top-4 left-2 md:left-4 xl:text-5xl">
+            <h1 class="absolute text-5xl font-bold text-rose-700 lg:text-4xl md:text-6xl top-2 md:top-4 left-2 md:left-4 xl:text-5xl">
                 Weather</h1>
 
                 <!--Dropdown menu button-->
@@ -60,15 +61,15 @@
                     <button>RIGHT NOW</button>
                 </li>
                 <li
-                    class="p-2 mx-3 my-2 duration-300 md:mx-10 md:my-0 hover:bg-rose-900 hover:text-black md:p-4 rounded-3xl">
+                    class="p-2 mx-3 my-2 duration-300 md:mx-10 md:my-0 hover:bg-rose-900 hover:text-rose-950 md:p-4 rounded-3xl">
                     <button onclick="window.location.href='./3hourly.html'">3 HOURS</button>
                 </li>
                 <li
-                    class="p-2 mx-3 my-2 duration-300 md:mx-10 md:my-0 hover:bg-rose-900 hover:text-black md:p-4 rounded-3xl">
+                    class="p-2 mx-3 my-2 duration-300 md:mx-10 md:my-0 hover:bg-rose-900 hover:text-rose-950 md:p-4 rounded-3xl">
                     <button>36 HOURS</button>
                 </li>
                 <li
-                    class="p-2 mx-3 my-2 duration-300 md:mx-10 md:my-0 hover:bg-rose-900 hover:text-black md:p-4 rounded-3xl">
+                    class="p-2 mx-3 my-2 duration-300 md:mx-10 md:my-0 hover:bg-rose-900 hover:text-rose-950 md:p-4 rounded-3xl">
                     <button onclick="window.location.href='./fivedays.html'">5 DAYS</button>
                 </li>
             </ul>
@@ -89,7 +90,7 @@
      <div id="homeTemp" class="p-10 mx-40 mt-20 text-3xl font-bold lg:p-20 lg:text-5xl rounded-3xl text-rose-700 bg-rose-950"></div>
         </section>
     
-    </div>
+    
 </body>
 
 </html>
