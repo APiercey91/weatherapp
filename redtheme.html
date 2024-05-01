@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="./tailwind.config.js"></script>
+    <script src="./scripts/script.js"></script>
+    <link rel="stylesheet" href="./styles/styles.css">
+    <link rel="website icon" type="jpg" href="./images/icon1.jpg">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <title>Weather</title>
+</head>
+
+<body class="relative inset-0 h-screen bg-repeat bg-cover" style="background-image: url('./images/rosebg.jpg');">
+    
+ 
+        <!--Top Bar-->
+        <section class="relative z-10 flex justify-end p-1 pr-5 bg-rose-900 text-rose-500">
+            <button class="mx-5 hover:text-rose-950">C&deg;</button>
+            <button class="mx-5 hover:text-rose-950">F&deg;</button>
+        </section>
+
+
+        <!--------------------------------------------------HEADER-------------------------------------------------->
+        <section class="relative flex flex-wrap p-12 bg-rose-950 md:p-16">
+            <h1 class="absolute text-5xl font-bold text-rose-700 lg:text-4xl md:text-6xl top-2 md:top-4 left-2 md:left-4 xl:text-5xl">
+                Weather</h1>
+
+                <!--Dropdown menu button-->
+            <div class="absolute lg:hidden top-2 right-2">
+                <button id="menuToggle" class="text-rose-700 focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd"
+                            d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 9a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 13a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                            clip-rule="evenodd" />
+                    </svg>
+                </button>
+            </div>
+
+          <!--Dropdown menu - only displays when button is hovered-->
+            <div class="absolute right-0 z-10 mt-2 origin-top-right rounded-md shadow-lg w-44 bg-rose-700 ring-1 ring-black ring-opacity-5 focus:outline-none"
+                role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+                <div class="hidden py-1" role="none" id="dropdown">
+                    <a href="#" class="block p-2 mx-3 my-2 duration-300 text-rose-950 hover:bg-rose-800 rounded-3xl" role="menuitem" tabindex="-1"
+                        id="menu-item-0">Right Now</a>
+                    <a href="#" class="block p-2 mx-3 my-2 duration-300 text-rose-950 hover:bg-rose-800 rounded-3xl" role="menuitem" tabindex="-1" id="menu-item-1">3
+                        Hours</a>
+                    <a href="#" class="block p-2 mx-3 my-2 duration-300 text-rose-950 hover:bg-rose-800 rounded-3xl" role="menuitem" tabindex="-1" id="menu-item-2">36
+                        Hours</a>
+                    <a href="#" class="block p-2 mx-3 my-2 duration-300 text-rose-950 hover:bg-rose-800 rounded-3xl" role="menuitem" tabindex="-1" id="menu-item-2">8 Days</a>
+                </div>
+            </div>
+
+
+            <!--Navigation bar - only displays when screen is wide enough-->
+            <ul id="menu"
+                class="absolute left-0 right-0 flex-wrap justify-center hidden list-none sm:hidden md:hidden lg:flex text-rose-700 lg:text-xl xl:text-3xl md:text-xl bottom-2 md:bottom-2">
+                <li class="p-2 mx-3 my-2 duration-300 md:mx-10 md:my-0 text-rose-950 bg-rose-900 md:p-4 rounded-3xl">
+                    <button>RIGHT NOW</button>
+                </li>
+                <li
+                    class="p-2 mx-3 my-2 duration-300 md:mx-10 md:my-0 hover:bg-rose-900 hover:text-rose-950 md:p-4 rounded-3xl">
+                    <button onclick="window.location.href='./3hourly.html'">3 HOURS</button>
+                </li>
+                <li
+                    class="p-2 mx-3 my-2 duration-300 md:mx-10 md:my-0 hover:bg-rose-900 hover:text-rose-950 md:p-4 rounded-3xl">
+                    <button>36 HOURS</button>
+                </li>
+                <li
+                    class="p-2 mx-3 my-2 duration-300 md:mx-10 md:my-0 hover:bg-rose-900 hover:text-rose-950 md:p-4 rounded-3xl">
+                    <button onclick="window.location.href='./fivedays.html'">5 DAYS</button>
+                </li>
+            </ul>
+
+        </section>
+
+        <!--------------------------------------------------BODY-------------------------------------------------->
+        <section class="flex flex-wrap justify-center my-10 text-white lg:my-20">
+
+            <div id="curDate" class="p-10 mx-40 mt-20 text-3xl font-bold lg:p-20 lg:text-5xl rounded-3xl text-rose-700 bg-rose-950"></div>
+
+     <!--      <div class="relative z-10 flex-shrink px-20 py-20 text-5xl font-bold bg-rose-950 mt-52 rounded-3xl text-rose-700"
+                id="curDate"></div>
+                <div class="relative z-10 flex-shrink px-20 py-20 text-5xl font-bold bg-rose-950 mt-52 rounded-3xl text-rose-700"
+                id="homeTemp"></div>
+     --> 
+
+     <div id="homeTemp" class="p-10 mx-40 mt-20 text-3xl font-bold lg:p-20 lg:text-5xl rounded-3xl text-rose-700 bg-rose-950"></div>
+        </section>
+    
+    
+</body>
+
+</html>
