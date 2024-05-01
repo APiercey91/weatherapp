@@ -1,3 +1,29 @@
 * {
     font-family: "Montserrat"
 }
+
+.bg-cloudy {
+    background-image: url('../images/cloudy.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.bg-clear {
+    background-image: url('../images/clearsky.jpg');
+}
+
+.bg-rain {
+    background-image: url('../images/raingif.gif');
+    background-size: cover;
+}
+
+.bg-thunder {
+    background-image: url('../images/thundergif.gif');
+    background-size: cover;
+    background-position: center;
+}
+
+.bg-snow {
+    background-image: url('../images/snow.gif');
+    background-size: cover;
+}

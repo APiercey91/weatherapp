@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function () {
             seconds = '0' + seconds; // Leading zero for seconds
         }
 
-        
+
 
         //set the inner html of the curDate to what we are looking for
 
@@ -84,35 +84,64 @@ document.addEventListener('DOMContentLoaded', function () {
         .then(data => {
             console.log(data);
             const tempDiv = document.getElementById('homeTemp');
-            const temp = data.main.temp;
+            const temp = Math.ceil(data.main.temp);
             const weather = data.weather[0].main;
             const city = data.name;
 
+
             if (weather === 'Clouds') {
+                weatherWidget.classList.add('bg-cloudy');
                 weatherWidget.innerHTML = `
                 <div class="mb-48 text-4xl font-bold">${day}<br>${month} ${dayDate}, ${year} <br>${city}</div>
                 <div class="text-5xl font-bold"><i class="fas fa-cloud"></i><br>${temp}&deg;</div>
                 <div class="text-3xl font-bold">Cloudy</div>
             `;
+
             } else if (weather === 'Clear') {
+                weatherWidget.classList.add('bg-clear');
                 weatherWidget.innerHTML = `
                 <div class="mb-48 text-4xl font-bold">${day}<br>${month} ${dayDate}, ${year} <br>${city}</div>
                 <div class="text-5xl font-bold "><i class="fas fa-sun"></i><br>${temp}&deg;</div>
                 <div class="text-3xl font-bold">Clear Skies</div>
                 `;
             } else if (weather === 'Rain') {
-                tempDiv.innerHTML = `<div>${city}</div><br><div>${temp}&deg;</div><div>${weather} <i class="fas fa-droplet"></i></div>`
+                weatherWidget.classList.add('bg-rain');
+                weatherWidget.innerHTML = `
+                <div class="mb-48 text-4xl font-bold">${day}<br>${month} ${dayDate}, ${year} <br>${city}</div>
+                <div class="text-5xl font-bold "><i class="fas fa-droplet"></i><br>${temp}&deg;</div>
+                <div class="text-3xl font-bold">Rainy</div>
+                `;
             } else if (weather === 'Drizzle') {
-                tempDiv.innerHTML = `<div>${city}</div><br><div>${temp}&deg;</div><div>${weather} <i class="fas fa-droplet"></i></div>`
+                weatherWidget.classList.add('bg-rain');
+                weatherWidget.innerHTML = `
+                <div class="mb-48 text-4xl font-bold">${day}<br>${month} ${dayDate}, ${year} <br>${city}</div>
+                <div class="text-5xl font-bold "><i class="fas fa-droplet"></i><br>${temp}&deg;</div>
+                <div class="text-3xl font-bold">Drizzle</div>
+                `;
             } else if (weather === 'Snow') {
-                tempDiv.innerHTML = `<div>${city}</div><br><div>${temp}&deg;</div><div>${weather} <i class="fas fa-snowflake"></i></div>`
+                weatherWidget.classList.add('bg-snow');
+                weatherWidget.innerHTML = `
+                <div class="mb-48 text-4xl font-bold">${day}<br>${month} ${dayDate}, ${year} <br>${city}</div>
+                <div class="text-5xl font-bold "><i class="fas fa-snowflake"></i><br>${temp}&deg;</div>
+                <div class="text-3xl font-bold">Snow</div>
+                `;
             } else if (weather === 'Thunderstorm') {
-                tempDiv.innerHTML = `<div>${city}</div><br><div>${temp}&deg;</div><div>${weather} <i class="fas fa-poo-storm"></i></div>`
+                weatherWidget.classList.add('bg-thunder');
+                weatherWidget.innerHTML = `
+                <div class="mb-48 text-4xl font-bold">${day}<br>${month} ${dayDate}, ${year} <br>${city}</div>
+                <div class="text-5xl font-bold "><i class="fas fa-poo-storm"></i><br>${temp}&deg;</div>
+                <div class="text-3xl font-bold">Thunderstorms</div>
+                `;
             } else {
-                tempDiv.innerHTML = `<div>${city}</div><br><div>${temp}&deg;</div><div>${weather}</div>`
+                weatherWidget.classList.add('bg-clear');
+                weatherWidget.innerHTML = `
+                <div class="mb-48 text-4xl font-bold">${day}<br>${month} ${dayDate}, ${year} <br>${city}</div>
+                <div class="text-5xl font-bold "><i class="fas fa-sun"></i><br>${temp}&deg;</div>
+                `;
             }
 
         })
+
 
     /* let display = false;
      let dropdownMenu = document.getElementById('dropdown');
@@ -141,17 +170,31 @@ document.addEventListener('DOMContentLoaded', function () {
 
     let dropdownMenu = document.getElementById('dropdown');
 
-    document.getElementById('menuToggle').addEventListener('mouseenter', display);
-    document.getElementById('dropdown').addEventListener('mouseenter', display);
-    document.getElementById('menuToggle').addEventListener('mouseleave', dontDisplay);
-    document.getElementById('dropdown').addEventListener('mouseleave', dontDisplay);
+    // document.getElementById('menuToggle').addEventListener('mouseenter', display);
+    //document.getElementById('dropdown').addEventListener('mouseenter', display);
+    //document.getElementById('menuToggle').addEventListener('mouseleave', dontDisplay);
+    // document.getElementById('dropdown').addEventListener('mouseleave', dontDisplay);
 
-    function display() {
-        dropdownMenu.classList.remove('hidden');
+    //function display() {
+    //     dropdownMenu.classList.remove('hidden');
+    //  }
+
+    // function dontDisplay() {
+    //     dropdownMenu.classList.add('hidden');
+    //  }
+
+    menuToggle.addEventListener('click', toggleMenu);
+    dropdownMenu.addEventListener('click', toggleMenu);
+
+    function toggleMenu() {
+        dropdownMenu.classList.toggle('hidden');
     }
 
-    function dontDisplay() {
-        dropdownMenu.classList.add('hidden');
-    }
+    // Close the dropdown menu when clicking outside of it
+    document.addEventListener('click', function (event) {
+        if (!dropdownMenu.contains(event.target) && event.target !== menuToggle) {
+            dropdownMenu.classList.add('hidden');
+        }
+    });
 
 });
