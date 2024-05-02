@@ -152,16 +152,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     menuToggleButton.addEventListener('click', function () {
-        console.log("test")
         dropdownMenu.classList.toggle('hidden');
     });
 
-    window.onclick = function (event) {
+    window.addEventListener = ('touchstart', function (event) {
         if (!dropdownMenu.contains(event.target) && !menuToggleButton.contains(event.target)) {
             if (!dropdownMenu.classList.contains('hidden')) {
                 dropdownMenu.classList.add('hidden');
             }
         }
-    }
+    });
 
 });
