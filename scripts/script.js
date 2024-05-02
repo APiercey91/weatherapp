@@ -155,9 +155,19 @@ document.addEventListener('DOMContentLoaded', function () {
         dropdownMenu.classList.toggle('hidden');
     });
 
+    window.addEventListener = ('touchstart', function (event) {
+        if (!dropdownMenu.contains(event.target) && !menuToggleButton.contains(event.target)) {
+            if (!dropdownMenu.classList.contains('hidden')) {
+                console.log("touchstart test")
+                dropdownMenu.classList.add('hidden');
+            }
+        }
+    });
+
     window.addEventListener = ('touchend', function (event) {
         if (!dropdownMenu.contains(event.target) && !menuToggleButton.contains(event.target)) {
             if (!dropdownMenu.classList.contains('hidden')) {
+                console.log("touchend test")
                 dropdownMenu.classList.add('hidden');
             }
         }
@@ -166,6 +176,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.addEventListener('click', function (event) {
         if (!dropdownMenu.contains(event.target) && !menuToggleButton.contains(event.target)) {
             if (!dropdownMenu.classList.contains('hidden')) {
+                console.log("click test")
                 dropdownMenu.classList.add('hidden');
             }
         }
