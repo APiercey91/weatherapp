@@ -143,63 +143,25 @@ document.addEventListener('DOMContentLoaded', function () {
         })
 
 
-    /* let display = false;
-     let dropdownMenu = document.getElementById('dropdown');
- 
-     document.getElementById('menuToggle').addEventListener('mouseover', dropdown);
- 
-     function dropdown() {
-         if (display == false) {
-             dropdownMenu.classList.remove('hidden');
-         } else {
-             dropdownMenu.classList.add('hidden');
-         }
-         display = !display;
-     }
- 
-     function updateDisplay() {
-     if (window.innerWidth < 768) {
-         dropdownMenu.classList.add('hidden');
-         display = false;
-     }
-     }
- 
-     updateDisplay();
-     window.addEventListener('resize', updateDisplay());
- */
 
+
+    //Dropdown menu functionality
     let dropdownMenu = document.getElementById('dropdown');
 
-      let menuToggle = document.getElementById('menuToggle');
+    let menuToggleButton = document.getElementById('menuToggle');
 
-    document.getElementById('menuToggle').addEventListener('mouseenter', display);
-    document.getElementById('dropdown').addEventListener('mouseenter', display);
-    document.getElementById('menuToggle').addEventListener('mouseleave', dontDisplay);
-     document.getElementById('dropdown').addEventListener('mouseleave', dontDisplay);
 
-    function display() {
-         dropdownMenu.classList.remove('hidden');
-      }
+    menuToggleButton.addEventListener('click', function () {
+        console.log("test")
+        dropdownMenu.classList.toggle('hidden');
+    });
 
-     function dontDisplay() {
-         dropdownMenu.classList.add('hidden');
-      }
-
-    //MENU DOESNT DISAPEAR ON IOS WHEN CLICKED OFF
-
-    
-
-    // Close the dropdown menu when clicking outside of it
-   // document.addEventListener('click', function (event) {
- //       if (!dropdownMenu.contains(event.target) && event.target !== menuToggle) {
-    //        dropdownMenu.classList.add('hidden');
-   //     }
-  //  });
-
-  document.addEventListener('click', function(event) {
-    if (!dropdownMenu.contains(event.target) && event.target !== menuToggle) {
-        dropdownMenu.classList.add('hidden');
+    window.onclick = function (event) {
+        if (!dropdownMenu.contains(event.target) && !menuToggleButton.contains(event.target)) {
+            if (!dropdownMenu.classList.contains('hidden')) {
+                dropdownMenu.classList.add('hidden');
+            }
+        }
     }
-});
 
 });
