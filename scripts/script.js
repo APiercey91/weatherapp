@@ -170,25 +170,24 @@ document.addEventListener('DOMContentLoaded', function () {
 
     let dropdownMenu = document.getElementById('dropdown');
 
-    // document.getElementById('menuToggle').addEventListener('mouseenter', display);
-    //document.getElementById('dropdown').addEventListener('mouseenter', display);
-    //document.getElementById('menuToggle').addEventListener('mouseleave', dontDisplay);
-    // document.getElementById('dropdown').addEventListener('mouseleave', dontDisplay);
+      let menuToggle = document.getElementById('menuToggle');
 
-    //function display() {
-    //     dropdownMenu.classList.remove('hidden');
-    //  }
+    document.getElementById('menuToggle').addEventListener('mouseenter', display);
+    document.getElementById('dropdown').addEventListener('mouseenter', display);
+    document.getElementById('menuToggle').addEventListener('mouseleave', dontDisplay);
+     document.getElementById('dropdown').addEventListener('mouseleave', dontDisplay);
 
-    // function dontDisplay() {
-    //     dropdownMenu.classList.add('hidden');
-    //  }
+    function display() {
+         dropdownMenu.classList.remove('hidden');
+      }
 
-    menuToggle.addEventListener('click', toggleMenu);
-    dropdownMenu.addEventListener('click', toggleMenu);
+     function dontDisplay() {
+         dropdownMenu.classList.add('hidden');
+      }
 
-    function toggleMenu() {
-        dropdownMenu.classList.toggle('hidden');
-    }
+    
+
+    
 
     // Close the dropdown menu when clicking outside of it
     document.addEventListener('click', function (event) {
