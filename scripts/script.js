@@ -196,4 +196,10 @@ document.addEventListener('DOMContentLoaded', function () {
    //     }
   //  });
 
+  document.addEventListener('click', function(event) {
+    if (!dropdownMenu.contains(event.target) && event.target !== menuToggle) {
+        dropdownMenu.classList.add('hidden');
+    }
+});
+
 });
