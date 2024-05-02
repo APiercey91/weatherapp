@@ -155,12 +155,20 @@ document.addEventListener('DOMContentLoaded', function () {
         dropdownMenu.classList.toggle('hidden');
     });
 
-    window.addEventListener = ('touchstart', function (event) {
+    window.addEventListener = ('touchend', function (event) {
         if (!dropdownMenu.contains(event.target) && !menuToggleButton.contains(event.target)) {
             if (!dropdownMenu.classList.contains('hidden')) {
                 dropdownMenu.classList.add('hidden');
             }
         }
     });
+
+    document.addEventListener('click', function (event) {
+        if (!dropdownMenu.contains(event.target) && !menuToggleButton.contains(event.target)) {
+            if (!dropdownMenu.classList.contains('hidden')) {
+                dropdownMenu.classList.add('hidden');
+            }
+        }
+    }, false);
 
 });
