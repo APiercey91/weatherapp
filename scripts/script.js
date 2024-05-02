@@ -185,7 +185,7 @@ document.addEventListener('DOMContentLoaded', function () {
          dropdownMenu.classList.add('hidden');
       }
 
-    
+    //MENU DOESNT DISAPEAR ON IOS WHEN CLICKED OFF
 
     
 
