@@ -8,10 +8,6 @@
 
 document.addEventListener('DOMContentLoaded', function () {
 
-
-    let curDateElement = document.getElementById('curDate');
-
-
     let day, month, year, dayDate;
 
     /**
@@ -59,12 +55,9 @@ document.addEventListener('DOMContentLoaded', function () {
             seconds = '0' + seconds; // Leading zero for seconds
         }
 
+        let time = document.getElementById('time');
+        time.innerHTML = `${newHours}:${minutes} ${amPm}`
 
-
-        //set the inner html of the curDate to what we are looking for
-
-        //log it to console
-        //console.log(formattedDate + "\n" + formattedTime + " " + amPm);
     }
 
     updateDateTime();
@@ -93,7 +86,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 weatherWidget.classList.add('bg-cloudy');
                 weatherWidget.innerHTML = `
                 <div class="mb-48 text-4xl font-bold">${day}<br>${month} ${dayDate}, ${year} <br>${city}</div>
-                <div class="text-5xl font-bold"><i class="fas fa-cloud"></i><br>${temp}&deg;</div>
+                <div class="text-5xl font-bold"><i class="fas fa-cloud"></i><br>${temp}&deg;C</div>
                 <div class="text-3xl font-bold">Cloudy</div>
             `;
 
@@ -101,42 +94,42 @@ document.addEventListener('DOMContentLoaded', function () {
                 weatherWidget.classList.add('bg-clear');
                 weatherWidget.innerHTML = `
                 <div class="mb-48 text-4xl font-bold">${day}<br>${month} ${dayDate}, ${year} <br>${city}</div>
-                <div class="text-5xl font-bold "><i class="fas fa-sun"></i><br>${temp}&deg;</div>
+                <div class="text-5xl font-bold "><i class="fas fa-sun"></i><br>${temp}&deg;C</div>
                 <div class="text-3xl font-bold">Clear Skies</div>
                 `;
             } else if (weather === 'Rain') {
                 weatherWidget.classList.add('bg-rain');
                 weatherWidget.innerHTML = `
                 <div class="mb-48 text-4xl font-bold">${day}<br>${month} ${dayDate}, ${year} <br>${city}</div>
-                <div class="text-5xl font-bold "><i class="fas fa-droplet"></i><br>${temp}&deg;</div>
+                <div class="text-5xl font-bold "><i class="fas fa-droplet"></i><br>${temp}&deg;C</div>
                 <div class="text-3xl font-bold">Rainy</div>
                 `;
             } else if (weather === 'Drizzle') {
                 weatherWidget.classList.add('bg-rain');
                 weatherWidget.innerHTML = `
                 <div class="mb-48 text-4xl font-bold">${day}<br>${month} ${dayDate}, ${year} <br>${city}</div>
-                <div class="text-5xl font-bold "><i class="fas fa-droplet"></i><br>${temp}&deg;</div>
+                <div class="text-5xl font-bold "><i class="fas fa-droplet"></i><br>${temp}&deg;C</div>
                 <div class="text-3xl font-bold">Drizzle</div>
                 `;
             } else if (weather === 'Snow') {
                 weatherWidget.classList.add('bg-snow');
                 weatherWidget.innerHTML = `
                 <div class="mb-48 text-4xl font-bold">${day}<br>${month} ${dayDate}, ${year} <br>${city}</div>
-                <div class="text-5xl font-bold "><i class="fas fa-snowflake"></i><br>${temp}&deg;</div>
+                <div class="text-5xl font-bold "><i class="fas fa-snowflake"></i><br>${temp}&deg;C</div>
                 <div class="text-3xl font-bold">Snow</div>
                 `;
             } else if (weather === 'Thunderstorm') {
                 weatherWidget.classList.add('bg-thunder');
                 weatherWidget.innerHTML = `
                 <div class="mb-48 text-4xl font-bold">${day}<br>${month} ${dayDate}, ${year} <br>${city}</div>
-                <div class="text-5xl font-bold "><i class="fas fa-poo-storm"></i><br>${temp}&deg;</div>
+                <div class="text-5xl font-bold "><i class="fas fa-poo-storm"></i><br>${temp}&deg;C</div>
                 <div class="text-3xl font-bold">Thunderstorms</div>
                 `;
             } else {
                 weatherWidget.classList.add('bg-clear');
                 weatherWidget.innerHTML = `
                 <div class="mb-48 text-4xl font-bold">${day}<br>${month} ${dayDate}, ${year} <br>${city}</div>
-                <div class="text-5xl font-bold "><i class="fas fa-sun"></i><br>${temp}&deg;</div>
+                <div class="text-5xl font-bold "><i class="fas fa-sun"></i><br>${temp}&deg;C</div>
                 `;
             }
 
@@ -172,14 +165,5 @@ document.addEventListener('DOMContentLoaded', function () {
            }
        }
    });
-
-  //  document.addEventListener('click', function (event) {
- //       if (!dropdownMenu.contains(event.target) && !menuToggleButton.contains(event.target)) {
-   //         if (!dropdownMenu.classList.contains('hidden')) {
-   //             console.log("click test")
-   //             dropdownMenu.classList.add('hidden');
-  //          }
-  //      }
-  //  }, false);
 
 });
