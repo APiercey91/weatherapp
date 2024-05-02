@@ -155,7 +155,7 @@ document.addEventListener('DOMContentLoaded', function () {
         dropdownMenu.classList.toggle('hidden');
     });
 
-    window.addEventListener = ('touchstart', function (event) {
+    document.addEventListener('touchstart', function (event) {
         if (!dropdownMenu.contains(event.target) && !menuToggleButton.contains(event.target)) {
             if (!dropdownMenu.classList.contains('hidden')) {
                 console.log("touchstart test")
@@ -164,22 +164,22 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    window.addEventListener = ('touchend', function (event) {
+    document.addEventListener('touchend', function (event) {
         if (!dropdownMenu.contains(event.target) && !menuToggleButton.contains(event.target)) {
             if (!dropdownMenu.classList.contains('hidden')) {
-                console.log("touchend test")
-                dropdownMenu.classList.add('hidden');
-            }
-        }
-    });
+              console.log("touchend test")
+              dropdownMenu.classList.add('hidden');
+           }
+       }
+   });
 
-    document.addEventListener('click', function (event) {
-        if (!dropdownMenu.contains(event.target) && !menuToggleButton.contains(event.target)) {
-            if (!dropdownMenu.classList.contains('hidden')) {
-                console.log("click test")
-                dropdownMenu.classList.add('hidden');
-            }
-        }
-    }, false);
+  //  document.addEventListener('click', function (event) {
+ //       if (!dropdownMenu.contains(event.target) && !menuToggleButton.contains(event.target)) {
+   //         if (!dropdownMenu.classList.contains('hidden')) {
+   //             console.log("click test")
+   //             dropdownMenu.classList.add('hidden');
+  //          }
+  //      }
+  //  }, false);
 
 });
