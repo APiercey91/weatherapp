@@ -66,13 +66,13 @@ document.addEventListener('DOMContentLoaded', function () {
     setInterval(updateDateTime, 1000);
 
 
-    const key = '23c7e268a83f05cccf48e0358bce3257';
+    const openWeatherKey = '23c7e268a83f05cccf48e0358bce3257';
     const lat = 44.6488;
-    const lon = -63.5752;
-    const URL = `https://api.openweathermap.org/data/2.5/weather?lat=44.64&lon=-63.57&appid=${key}&units=metric`;
+    const lon = -63.5752;     
+    const openWeatherURL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${openWeatherKey}&units=metric`;
 
-    //fetching the api for the home page
-    fetch(URL)
+    //fetching the weather api for the home page
+    fetch(openWeatherURL)
         .then(response => response.json())
         .then(data => {
             console.log(data);
