@@ -168,4 +168,5 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 
+//TODO: add NASA astronomy image of the day
 //https://api.nasa.gov/

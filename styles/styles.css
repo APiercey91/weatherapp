@@ -27,3 +27,13 @@
     background-image: url('../images/snow.gif');
     background-size: cover;
 }
+
+.bg-blueskygif {
+    background-image: url('../images/3hourly.gif');
+    background-size:cover;
+}
+
+.bg-darksky {
+    background-image: url('../images/darksky.gif');
+    background-size:cover;
+}

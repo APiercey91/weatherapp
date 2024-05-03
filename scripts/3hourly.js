@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 const forecastEntry = document.createElement('div');
                 forecastEntry.innerHTML =
-                 `<div class="border-4 p-5 rounded-3xl border-rose-700">
+                 `<div class="border-4 p-5 border-white">
                  <div class="font-bold">${day}</div>
                  <br><div>${newHours}${amPm}</div>
                  <br><div>${temp}&deg;</div>
@@ -64,14 +64,43 @@ document.addEventListener('DOMContentLoaded', function () {
      
 
 
-        nextButton.addEventListener('click', ()=> {
+      //  nextButton.addEventListener('click', ()=> {
 
-            hourlyDiv.scrollLeft += 1400;
-        });
+   //         hourlyDiv.scrollLeft += 1400;
+    //    });
 
-        prevButton.addEventListener('click', () => {
+     //   prevButton.addEventListener('click', () => {
          
-            hourlyDiv.scrollLeft -= 1400;
-        });
+    //        hourlyDiv.scrollLeft -= 1400;
+    //    });
+
+        //dropdown menu functionality
+        let dropdownMenu = document.getElementById('dropdown');
+
+    let menuToggleButton = document.getElementById('menuToggle');
+
+
+    menuToggleButton.addEventListener('click', function () {
+        dropdownMenu.classList.toggle('hidden');
+    });
+
+    document.addEventListener('touchstart', function (event) {
+        if (!dropdownMenu.contains(event.target) && !menuToggleButton.contains(event.target)) {
+            if (!dropdownMenu.classList.contains('hidden')) {
+                console.log("touchstart test")
+                dropdownMenu.classList.add('hidden');
+            }
+        }
+    });
+
+    document.addEventListener('touchend', function (event) {
+        if (!dropdownMenu.contains(event.target) && !menuToggleButton.contains(event.target)) {
+            if (!dropdownMenu.classList.contains('hidden')) {
+              console.log("touchend test")
+              dropdownMenu.classList.add('hidden');
+           }
+       }
+   });
 
 });
+
