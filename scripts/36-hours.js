@@ -1,6 +1,8 @@
 /**
  * 
- * Javascript file for providing functionality to Weather app
+ * Javascript file for providing functionality for the 36-hours page
+ * 
+ * Author: Alex Piercey
  * 
  */
 

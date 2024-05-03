@@ -1,7 +1,9 @@
 /**
  * 
- * Javascript file for providing functionality to Weather app
+ * Javascript file for providing functionality to the home page of the Weather app
  * 
+ * 
+ * Author: Alex Piercey
  */
 
 
