@@ -22,10 +22,33 @@
 
     <!--Top Bar-->
 
-    <section class="relative z-10 flex justify-end pr-5 text-white">
-        <p class="absolute left-0 ml-2 font-bold text-white" id="time"></p>
+    <section class="flex justify-between">
+
+        <div class="flex justify-start space-x-5 text-white ">
+        <p class="relative left-0 font-bold text-white" id="time"></p>
+        <label for="location" class="">Location:</label>
+        <select name="location" id="location" class="bg-blue-900">
+            <option value="Halifax" selected>Halifax</option>
+            <option value="Fredericton">Fredericton</option>
+            <option value="St. John's">St. John's</option>
+            <option value="Charlottetown">Charlottetown</option>
+            <option value="Quebec City">Quebec City</option>
+            <option value="Toronto">Toronto</option>
+            <option value="Winnipeg">Winnipeg</option>
+            <option value="Edmonton">Edmonton</option>
+            <option value="Victoria">Victoria</option>
+            <option value="Regina">Regina</option>
+            <option value="Whitehorse" >Whitehorse</option>
+            <option value="Yellowknife">Yellowknife</option>
+            <option value="Iqaluit">Iqaluit</option>  
+        </select>
+    </div>
+
+        <div class="relative z-10 flex justify-end pr-2 text-white">
         <button class="mx-5 hover:scale-125" id="celsius">C&deg;</button>
         <button class="mx-5 hover:scale-125" id="farenheight">F&deg;</button>
+    </div>
+        
     </section>
 
 

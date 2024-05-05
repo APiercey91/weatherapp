@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function () {
         //put a leading 0 on seconds if it is less than 10
         let seconds = currentDate.getSeconds();
         if (seconds < 10) {
-            seconds = '0' + seconds; // Leading zero for seconds
+            seconds = '0' + seconds; 
         }
 
         let time = document.getElementById('time');
@@ -73,6 +73,12 @@ document.addEventListener('DOMContentLoaded', function () {
             document.getElementById('bodysection').classList.add('bg-darksky')
         }
     }
+
+
+
+
+
+
 
 
 
