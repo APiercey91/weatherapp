@@ -68,77 +68,110 @@ document.addEventListener('DOMContentLoaded', function () {
     setInterval(updateDateTime, 1000);
 
 
-    const openWeatherKey = '23c7e268a83f05cccf48e0358bce3257';
-    const lat = 44.6488;
-    const lon = -63.5752;     
-    const openWeatherURL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${openWeatherKey}&units=metric`;
+    let unit = 'metric';
 
-    //fetching the weather api for the home page
-    fetch(openWeatherURL)
-        .then(response => response.json())
-        .then(data => {
-            console.log(data);
-            const tempDiv = document.getElementById('homeTemp');
-            const temp = Math.ceil(data.main.temp);
-            const weather = data.weather[0].main;
-            const city = data.name;
+    let celsiusButton = document.getElementById('celsius');
+    let farenButton = document.getElementById('farenheight');
 
 
-            if (weather === 'Clouds') {
-                weatherWidget.classList.add('bg-cloudy');
-                weatherWidget.innerHTML = `
+    celsiusButton.addEventListener('click', function () {
+        unit = 'metric';
+        updateWeatherData()
+        celsiusButton.classList.add("font-bold");
+        celsiusButton.classList.add("scale-125");
+        farenButton.classList.remove("font-bold");
+        farenButton.classList.remove("scale-125");
+    })
+
+
+    farenButton.addEventListener('click', function () {
+        unit = 'imperial';
+        updateWeatherData();
+        farenButton.classList.add("font-bold");
+        farenButton.classList.add("scale-125");
+        celsiusButton.classList.remove("font-bold");
+        celsiusButton.classList.remove("scale-125");
+    })
+
+
+    /**
+     * Function to make sure the data updates when celsius or farenheight button is pressed
+     */
+    function updateWeatherData() {
+        const openWeatherKey = '23c7e268a83f05cccf48e0358bce3257';
+        const lat = 44.6488;
+        const lon = -63.5752;
+        const openWeatherURL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${openWeatherKey}&units=${unit}`;
+
+        //fetching the weather api for the home page
+        fetch(openWeatherURL)
+            .then(response => response.json())
+            .then(data => {
+                //console.log(data);
+                const tempDiv = document.getElementById('homeTemp');
+                const temp = Math.ceil(data.main.temp);
+                const weather = data.weather[0].main;
+                const city = data.name;
+
+
+                if (weather === 'Clouds') {
+                    weatherWidget.classList.add('bg-cloudy');
+                    weatherWidget.innerHTML = `
                 <div class="mb-48 text-4xl font-bold">${day}<br>${month} ${dayDate}, ${year} <br>${city}</div>
                 <div class="text-5xl font-bold"><i class="fas fa-cloud"></i><br>${temp}&deg;C</div>
                 <div class="text-3xl font-bold">Cloudy</div>
             `;
 
-            } else if (weather === 'Clear') {
-                weatherWidget.classList.add('bg-clear');
-                weatherWidget.innerHTML = `
+                } else if (weather === 'Clear') {
+                    weatherWidget.classList.add('bg-clear');
+                    weatherWidget.innerHTML = `
                 <div class="mb-48 text-4xl font-bold">${day}<br>${month} ${dayDate}, ${year} <br>${city}</div>
                 <div class="text-5xl font-bold "><i class="fas fa-sun"></i><br>${temp}&deg;C</div>
                 <div class="text-3xl font-bold">Clear Skies</div>
                 `;
-            } else if (weather === 'Rain') {
-                weatherWidget.classList.add('bg-rain');
-                weatherWidget.innerHTML = `
+                } else if (weather === 'Rain') {
+                    weatherWidget.classList.add('bg-rain');
+                    weatherWidget.innerHTML = `
                 <div class="mb-48 text-4xl font-bold">${day}<br>${month} ${dayDate}, ${year} <br>${city}</div>
                 <div class="text-5xl font-bold "><i class="fas fa-droplet"></i><br>${temp}&deg;C</div>
                 <div class="text-3xl font-bold">Rainy</div>
                 `;
-            } else if (weather === 'Drizzle') {
-                weatherWidget.classList.add('bg-rain');
-                weatherWidget.innerHTML = `
+                } else if (weather === 'Drizzle') {
+                    weatherWidget.classList.add('bg-rain');
+                    weatherWidget.innerHTML = `
                 <div class="mb-48 text-4xl font-bold">${day}<br>${month} ${dayDate}, ${year} <br>${city}</div>
                 <div class="text-5xl font-bold "><i class="fas fa-droplet"></i><br>${temp}&deg;C</div>
                 <div class="text-3xl font-bold">Drizzle</div>
                 `;
-            } else if (weather === 'Snow') {
-                weatherWidget.classList.add('bg-snow');
-                weatherWidget.innerHTML = `
+                } else if (weather === 'Snow') {
+                    weatherWidget.classList.add('bg-snow');
+                    weatherWidget.innerHTML = `
                 <div class="mb-48 text-4xl font-bold">${day}<br>${month} ${dayDate}, ${year} <br>${city}</div>
                 <div class="text-5xl font-bold "><i class="fas fa-snowflake"></i><br>${temp}&deg;C</div>
                 <div class="text-3xl font-bold">Snow</div>
                 `;
-            } else if (weather === 'Thunderstorm') {
-                weatherWidget.classList.add('bg-thunder');
-                weatherWidget.innerHTML = `
+                } else if (weather === 'Thunderstorm') {
+                    weatherWidget.classList.add('bg-thunder');
+                    weatherWidget.innerHTML = `
                 <div class="mb-48 text-4xl font-bold">${day}<br>${month} ${dayDate}, ${year} <br>${city}</div>
                 <div class="text-5xl font-bold "><i class="fas fa-poo-storm"></i><br>${temp}&deg;C</div>
                 <div class="text-3xl font-bold">Thunderstorms</div>
                 `;
-            } else {
-                weatherWidget.classList.add('bg-clear');
-                weatherWidget.innerHTML = `
+                } else {
+                    weatherWidget.classList.add('bg-clear');
+                    weatherWidget.innerHTML = `
                 <div class="mb-48 text-4xl font-bold">${day}<br>${month} ${dayDate}, ${year} <br>${city}</div>
                 <div class="text-5xl font-bold "><i class="fas fa-sun"></i><br>${temp}&deg;C</div>
                 `;
-            }
+                }
 
-        })
+            })
+    }
 
-
-
+    //initially loading the data, setting it to celsius
+    updateWeatherData();
+    celsiusButton.classList.add("font-bold");
+    celsiusButton.classList.add("scale-125");
 
     //Dropdown menu functionality
     let dropdownMenu = document.getElementById('dropdown');
@@ -162,48 +195,44 @@ document.addEventListener('DOMContentLoaded', function () {
     document.addEventListener('touchend', function (event) {
         if (!dropdownMenu.contains(event.target) && !menuToggleButton.contains(event.target)) {
             if (!dropdownMenu.classList.contains('hidden')) {
-              console.log("touchend test")
-              dropdownMenu.classList.add('hidden');
-           }
-       }
-   });
+                console.log("touchend test")
+                dropdownMenu.classList.add('hidden');
+            }
+        }
+    });
 
 
 
-//NASA astronmy image of the day 
-const nasaKey = `4MJHEjfojKO4eJsoLUNCY6IcsMvDuTve718nTmhY`;
-const nasaURL = `https://api.nasa.gov/planetary/apod?api_key=${nasaKey}`;
+    //NASA astronmy image of the day 
+    const nasaKey = `4MJHEjfojKO4eJsoLUNCY6IcsMvDuTve718nTmhY`;
+    const nasaURL = `https://api.nasa.gov/planetary/apod?api_key=${nasaKey}`;
 
-fetch(nasaURL)
-.then(response => response.json())
-.then(data => {
+    fetch(nasaURL)
+        .then(response => response.json())
+        .then(data => {
 
-    console.log(data);
- let image = data.url;
-let text = data.explanation;
-document.body.style.backgroundImage = `url${image}`;
-
-
+            console.log(data);
+            let image = data.url;
+            let text = data.explanation;
+            document.body.style.backgroundImage = `url${image}`;
 
 
 
- let aotd = document.getElementById('aotd');
 
-aotd.style.backgroundImage = `url('${image}')`;
-aotd.style.backgroundSize = `cover`;
-aotd.style.backgroundRepeat = 'no-repeat';
-aotd.style.backgroundPosition = 'center';
 
- aotd.innerHTML = `
+            let aotd = document.getElementById('aotd');
+
+            aotd.style.backgroundImage = `url('${image}')`;
+            aotd.style.backgroundSize = `cover`;
+            aotd.style.backgroundRepeat = 'no-repeat';
+            aotd.style.backgroundPosition = 'center';
+
+            aotd.innerHTML = `
  <p class="font-bold self-start">NASA's AOTD</p>
  <p class="hidden lg:block lg:text-xl">${text}</p>
  `;
 
-})
+        })
 
 
 });
-
-//TODO: add NASA astronomy image of the day
-//https://api.nasa.gov/
-//API key: 4MJHEjfojKO4eJsoLUNCY6IcsMvDuTve718nTmhY
