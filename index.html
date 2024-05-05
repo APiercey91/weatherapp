@@ -17,7 +17,7 @@
     <title>Weather</title>
 </head>
 
-    <body class="bg-blue-900">
+<body class="bg-blue-900">
 
     <!--Top Bar-->
 
@@ -48,23 +48,23 @@
 
         <!--Dropdown menu - only displays when button is hovered-->
         <div class="absolute right-0 z-10 hidden mt-2 origin-top-right bg-blue-900 rounded-md shadow-lg w-44 ring-1 ring-black ring-opacity-5 focus:outline-none"
-        role="menu"aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1" id="dropdown">
-            
-                <a href="#"
-                    class="block p-2 mx-3 my-2 text-white duration-300 border border-transparent focus:scale-105 focus:border-white"
-                    role="menuitem" tabindex="-1" id="menu-item-0">Current</a>
-                <a href="./36-hours.html"
-                    class="block p-2 mx-3 my-2 text-white duration-300 border border-transparent focus:scale-105 focus:border-white"
-                    role="menuitem" tabindex="-1" id="menu-item-1">36
-                    Hours</a>
-                <a href="./8-days.html"
-                    class="block p-2 mx-3 my-2 text-white duration-300 border border-transparent focus:scale-105 focus:border-white"
-                    role="menuitem" tabindex="-1" id="menu-item-2">8
-                    Days</a>
-                <a href="./weekend.html"
-                    class="block p-2 mx-3 my-2 text-white duration-300 border border-transparent focus:scale-105 focus:border-white"
-                    role="menuitem" tabindex="-1" id="menu-item-2">Weekend</a>
-          
+            role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1" id="dropdown">
+
+            <a href="#"
+                class="block p-2 mx-3 my-2 text-white duration-300 border border-transparent focus:scale-105 focus:border-white"
+                role="menuitem" tabindex="-1" id="menu-item-0">Current</a>
+            <a href="./36-hours.html"
+                class="block p-2 mx-3 my-2 text-white duration-300 border border-transparent focus:scale-105 focus:border-white"
+                role="menuitem" tabindex="-1" id="menu-item-1">36
+                Hours</a>
+            <a href="./8-days.html"
+                class="block p-2 mx-3 my-2 text-white duration-300 border border-transparent focus:scale-105 focus:border-white"
+                role="menuitem" tabindex="-1" id="menu-item-2">8
+                Days</a>
+            <a href="./weekend.html"
+                class="block p-2 mx-3 my-2 text-white duration-300 border border-transparent focus:scale-105 focus:border-white"
+                role="menuitem" tabindex="-1" id="menu-item-2">Weekend</a>
+
         </div>
 
 
@@ -92,12 +92,21 @@
 
     <!--------------------------------------------------BODY-------------------------------------------------->
 
-    <section class="flex flex-col p-5 mx-10 my-10 text-white rounded-3xl lg:my-20" id="weatherWidget">
-        
-    </section>
-    
+
+    <div class="flex flex-col justify-center ">
+
+        <!--Current weather-->
+        <section class="flex flex-col p-5 mx-10 my-10 text-white rounded-3xl lg:my-20" id="weatherWidget">
+
+        </section>
+
+
+        <!--NASA image of the day-->
+        <section class="flex flex-col items-center justify-between h-screen p-5 mx-10 my-10 text-white bg-gray-900 lg:text-5xl rounded-3xl lg:my-20" id="aotd">
+            
+
+        </section>
+    </div>
 </body>
 
 </html>
-
-
