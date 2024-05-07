@@ -17,30 +17,42 @@ document.addEventListener('DOMContentLoaded', function () {
     const nasaURL = `https://api.nasa.gov/planetary/apod?api_key=${nasaKey}`;
 
     fetch(nasaURL)
-    .then(response => response.json())
-    .then(data => {
-        const image = data.url;
-        const text = data.explanation;
-        const aotd = document.getElementById('aotd');
-        aotd.style.backgroundImage = `url('${image}')`;
-        aotd.style.backgroundSize = `cover`;
-        aotd.style.backgroundRepeat = 'no-repeat';
-        aotd.style.backgroundPosition = 'center';
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
+            console.log(data.url)
+            const image = data.url;
+            const text = data.explanation;
+            const aotd = document.getElementById('aotd');
+            aotd.style.backgroundImage = `url('${image}')`;
+            aotd.style.backgroundSize = `cover`;
+            aotd.style.backgroundRepeat = 'no-repeat';
+            aotd.style.backgroundPosition = 'center';
 
-        let imageDescription = document.getElementById('imageDescription');
+            let imageDescription = document.getElementById('imageDescription');
 
-        function displayText() {
-            imageDescription.innerHTML = `${text}`
-            if (imageDescription.classList.contains('hidden')){
-                imageDescription.classList.remove('hidden');
-            } else {
-                imageDescription.classList.add('hidden');
+            function displayText() {
+                if (!image.endsWith(`.png`)) {
+                    aotd.innerHTML = `
+                    <iframe
+                        src="${image}">
+                    </iframe>
+                    `
+                } else {
+
+
+                    imageDescription.innerHTML = `${text}`
+                    if (imageDescription.classList.contains('hidden')) {
+                        imageDescription.classList.remove('hidden');
+                    } else {
+                        imageDescription.classList.add('hidden');
+                    }
+                }
             }
-        }
 
 
-        document.getElementById('aotd').addEventListener('click', displayText);
+            document.getElementById('aotd').addEventListener('click', displayText);
 
-    });
+        });
 
 });
