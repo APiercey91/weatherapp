@@ -30,16 +30,22 @@ document.addEventListener('DOMContentLoaded', function () {
             aotd.style.backgroundPosition = 'center';
 
             let imageDescription = document.getElementById('imageDescription');
+                
+            //if the image of the day is a video, display it
+            if (!image.endsWith('.png') && !image.endsWith('.jpg') && !image.endsWith('.gif')) {
+                aotd.classList.remove('hidden');
+                aotd.innerHTML = `
+                <iframe class="w-full h-full"
+                    src="${image}">
+                </iframe>
+                `
+            } else {
+
+            }
 
             function displayText() {
-                if (!image.endsWith(`.png`)) {
-                    aotd.innerHTML = `
-                    <iframe
-                        src="${image}">
-                    </iframe>
-                    `
-                } else {
-
+                
+                    document.getElementById('aotd').addEventListener('click', displayText);
 
                     imageDescription.innerHTML = `${text}`
                     if (imageDescription.classList.contains('hidden')) {
@@ -47,11 +53,12 @@ document.addEventListener('DOMContentLoaded', function () {
                     } else {
                         imageDescription.classList.add('hidden');
                     }
-                }
+                
             }
 
-
             document.getElementById('aotd').addEventListener('click', displayText);
+
+            
 
         });
 

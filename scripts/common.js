@@ -75,13 +75,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
 
-
-
-
-
-
-
-
     let celsiusButton = document.getElementById('celsius');
     let farenButton = document.getElementById('farenheight');
 
@@ -108,7 +101,26 @@ document.addEventListener('DOMContentLoaded', function () {
         updateWeatherData();
     })
 
+    //TODO: set event listener for this
+function changeLocation() {
+let locationElement = document.getElementById('location');
+let location = locationElement.value;
+console.log(location)
+}
 
+document.getElementById('halifax').addEventListener('click', changeLocation);
+document.getElementById('fredericton').addEventListener('click', changeLocation);
+document.getElementById('halifax').addEventListener('click', changeLocation);
+document.getElementById('halifax').addEventListener('click', changeLocation);
+document.getElementById('halifax').addEventListener('click', changeLocation);
+document.getElementById('halifax').addEventListener('click', changeLocation);
+document.getElementById('halifax').addEventListener('click', changeLocation);
+document.getElementById('halifax').addEventListener('click', changeLocation);
+document.getElementById('halifax').addEventListener('click', changeLocation);
+document.getElementById('halifax').addEventListener('click', changeLocation);
+document.getElementById('halifax').addEventListener('click', changeLocation);
+document.getElementById('halifax').addEventListener('click', changeLocation);
+document.getElementById('halifax').addEventListener('click', changeLocation);
 
 
     function updateWeatherData() {
