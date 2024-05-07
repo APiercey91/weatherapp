@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function () {
             aotd.style.backgroundImage = `url('${image}')`;
             aotd.style.backgroundSize = `cover`;
             aotd.style.backgroundRepeat = 'no-repeat';
-            aotd.style.backgroundPosition = 'center';
+            aotd.style.backgroundPosition = 'center bottom';
 
             let imageDescription = document.getElementById('imageDescription');
                 

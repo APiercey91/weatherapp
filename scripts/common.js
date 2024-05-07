@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function () {
         //put a leading 0 on seconds if it is less than 10
         let seconds = currentDate.getSeconds();
         if (seconds < 10) {
-            seconds = '0' + seconds; 
+            seconds = '0' + seconds;
         }
 
         let time = document.getElementById('time');
@@ -102,25 +102,25 @@ document.addEventListener('DOMContentLoaded', function () {
     })
 
     //TODO: set event listener for this
-function changeLocation() {
-let locationElement = document.getElementById('location');
-let location = locationElement.value;
-console.log(location)
-}
+    function changeLocation() {
+        let locationElement = document.getElementById('location');
+        let location = locationElement.value;
+        console.log(location)
+    }
 
-document.getElementById('halifax').addEventListener('click', changeLocation);
-document.getElementById('fredericton').addEventListener('click', changeLocation);
-document.getElementById('halifax').addEventListener('click', changeLocation);
-document.getElementById('halifax').addEventListener('click', changeLocation);
-document.getElementById('halifax').addEventListener('click', changeLocation);
-document.getElementById('halifax').addEventListener('click', changeLocation);
-document.getElementById('halifax').addEventListener('click', changeLocation);
-document.getElementById('halifax').addEventListener('click', changeLocation);
-document.getElementById('halifax').addEventListener('click', changeLocation);
-document.getElementById('halifax').addEventListener('click', changeLocation);
-document.getElementById('halifax').addEventListener('click', changeLocation);
-document.getElementById('halifax').addEventListener('click', changeLocation);
-document.getElementById('halifax').addEventListener('click', changeLocation);
+    document.getElementById('location').addEventListener('change', changeLocation);
+   // document.getElementById('fredericton').addEventListener('change', changeLocation);
+  //  document.getElementById('stjohn').addEventListener('change', changeLocation);
+  //  document.getElementById('charlottetown').addEventListener('change', changeLocation);
+   // document.getElementById('quebec').addEventListener('change', changeLocation);
+  //  document.getElementById('toronto').addEventListener('change', changeLocation);
+   // document.getElementById('winnipeg').addEventListener('change', changeLocation);
+   // document.getElementById('edmonton').addEventListener('change', changeLocation);
+   // document.getElementById('victoria').addEventListener('change', changeLocation);
+   // document.getElementById('regina').addEventListener('change', changeLocation);
+   // document.getElementById('whitehorse').addEventListener('change', changeLocation);
+   // document.getElementById('yellowknife').addEventListener('change', changeLocation);
+   // document.getElementById('iqaluit').addEventListener('change', changeLocation);
 
 
     function updateWeatherData() {
@@ -215,6 +215,7 @@ document.getElementById('halifax').addEventListener('click', changeLocation);
 
                         if (hourlyDiv) {
 
+                            //set it blank
                             hourlyDiv.innerHTML = '';
 
                             data.list.slice(0, 12).forEach(hour => {
@@ -241,6 +242,15 @@ document.getElementById('halifax').addEventListener('click', changeLocation);
 
 
                                 const temp = Math.ceil(hour.main.temp);
+
+                                let formattedTemp;
+
+                                if (unit === 'metric') {
+                                    formattedTemp = `${temp}&deg;C`;
+                                } else {
+                                    formattedTemp = `${temp}&deg;F`
+                                }
+
                                 const weather = hour.weather[0].main;
 
                                 const forecastEntry = document.createElement('div');
@@ -275,8 +285,6 @@ document.getElementById('halifax').addEventListener('click', changeLocation);
     let prevButton = document.getElementById('prevButton');
 
     if (hourlyDiv && nextButton && prevButton) {
-
-
 
         nextButton.addEventListener('click', () => {
 
