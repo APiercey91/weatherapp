@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-    let day, month, year, dayDate;
+    let day, month, year, dayDate, lat, lon;
 
     /**
      * Using Date interface to display date and time
@@ -101,32 +101,45 @@ document.addEventListener('DOMContentLoaded', function () {
         updateWeatherData();
     })
 
-    //TODO: set event listener for this
+
+
+
+    const cityCoordinates = {
+        halifax: { lat: 44.6488, lon: -63.5752},
+        fredericton: { lat: 45.9454, lon: -66.6655},
+        stjohns: { lat: 47.5605, lon: -52.7128},
+        charlottetown: { lat: 46.2388, lon: -63.1291 },
+        quebeccity: { lat: 46.8298, lon: -71.2540},
+        toronto: { lat: 43.70011, lon: -79.4163},
+        winnipeg: { lat: 49.8844, lon: -97.14704 },
+        edmonton: { lat: 53.55014, lon: -113.46871 },
+        victoria: { lat: 48.4359, lon: -123.35155},
+        regina: { lat: 50.45008, lon: -104.6178},
+        whitehorse: { lat: 60.71611, lon: -135.05375},
+        yellowknife: { lat: 62.4541, lon: -114.3724},
+        iqaluit: { lat: 63.7486, lon: -68.5197}
+    };
+
+
     function changeLocation() {
         let locationElement = document.getElementById('location');
-        let location = locationElement.value;
-        console.log(location)
+        let location = locationElement.value.toLowerCase();
+        console.log(location);
+        if (cityCoordinates.hasOwnProperty(location)) {
+            lat = cityCoordinates[location].lat;
+            lon = cityCoordinates[location].lon;
+            updateWeatherData();
+        }
     }
 
+    changeLocation();
     document.getElementById('location').addEventListener('change', changeLocation);
-   // document.getElementById('fredericton').addEventListener('change', changeLocation);
-  //  document.getElementById('stjohn').addEventListener('change', changeLocation);
-  //  document.getElementById('charlottetown').addEventListener('change', changeLocation);
-   // document.getElementById('quebec').addEventListener('change', changeLocation);
-  //  document.getElementById('toronto').addEventListener('change', changeLocation);
-   // document.getElementById('winnipeg').addEventListener('change', changeLocation);
-   // document.getElementById('edmonton').addEventListener('change', changeLocation);
-   // document.getElementById('victoria').addEventListener('change', changeLocation);
-   // document.getElementById('regina').addEventListener('change', changeLocation);
-   // document.getElementById('whitehorse').addEventListener('change', changeLocation);
-   // document.getElementById('yellowknife').addEventListener('change', changeLocation);
-   // document.getElementById('iqaluit').addEventListener('change', changeLocation);
+
+
 
 
     function updateWeatherData() {
         const openWeatherKey = '23c7e268a83f05cccf48e0358bce3257';
-        const lat = 44.6488;
-        const lon = -63.5752;
         const currentWeatherURL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${openWeatherKey}&units=${unit}`;
         const hourWeatherURL = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${openWeatherKey}&units=${unit}`;
 
@@ -154,6 +167,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     const weatherWidget = document.getElementById('weatherWidget');
 
                     if (weather === 'Clouds') {
+                        weatherWidget.classList.remove('bg-clear', 'bg-rain', 'bg-snow', 'bg-thunder');
                         weatherWidget.classList.add('bg-cloudy');
                         weatherWidget.innerHTML = `
             <div class="mb-48 text-4xl font-bold">${day}<br>${month} ${dayDate}, ${year} <br>${city}</div>
@@ -162,6 +176,7 @@ document.addEventListener('DOMContentLoaded', function () {
         `;
 
                     } else if (weather === 'Clear') {
+                        weatherWidget.classList.remove('bg-cloudy', 'bg-rain', 'bg-snow', 'bg-thunder');
                         weatherWidget.classList.add('bg-clear');
                         weatherWidget.innerHTML = `
             <div class="mb-48 text-4xl font-bold">${day}<br>${month} ${dayDate}, ${year} <br>${city}</div>
@@ -169,6 +184,7 @@ document.addEventListener('DOMContentLoaded', function () {
             <div class="text-3xl font-bold">Clear Skies</div>
             `;
                     } else if (weather === 'Rain') {
+                        weatherWidget.classList.remove('bg-cloudy', 'bg-clear', 'bg-snow', 'bg-thunder');
                         weatherWidget.classList.add('bg-rain');
                         weatherWidget.innerHTML = `
             <div class="mb-48 text-4xl font-bold">${day}<br>${month} ${dayDate}, ${year} <br>${city}</div>
@@ -176,6 +192,7 @@ document.addEventListener('DOMContentLoaded', function () {
             <div class="text-3xl font-bold">Rainy</div>
             `;
                     } else if (weather === 'Drizzle') {
+                        weatherWidget.classList.remove('bg-cloudy', 'bg-clear', 'bg-snow', 'bg-thunder');
                         weatherWidget.classList.add('bg-rain');
                         weatherWidget.innerHTML = `
             <div class="mb-48 text-4xl font-bold">${day}<br>${month} ${dayDate}, ${year} <br>${city}</div>
@@ -183,6 +200,7 @@ document.addEventListener('DOMContentLoaded', function () {
             <div class="text-3xl font-bold">Drizzle</div>
             `;
                     } else if (weather === 'Snow') {
+                        weatherWidget.classList.remove('bg-cloudy', 'bg-clear', 'bg-rain', 'bg-thunder');
                         weatherWidget.classList.add('bg-snow');
                         weatherWidget.innerHTML = `
             <div class="mb-48 text-4xl font-bold">${day}<br>${month} ${dayDate}, ${year} <br>${city}</div>
@@ -190,6 +208,7 @@ document.addEventListener('DOMContentLoaded', function () {
             <div class="text-3xl font-bold">Snow</div>
             `;
                     } else if (weather === 'Thunderstorm') {
+                        weatherWidget.classList.remove('bg-cloudy', 'bg-clear', 'bg-snow', 'bg-rain');
                         weatherWidget.classList.add('bg-thunder');
                         weatherWidget.innerHTML = `
             <div class="mb-48 text-4xl font-bold">${day}<br>${month} ${dayDate}, ${year} <br>${city}</div>
