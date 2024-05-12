@@ -1,3 +1,9 @@
+/**
+ * JavaScript file for common code used by all pages
+ * 
+ * Author: Alex Piercey
+ */
+
 
 document.addEventListener('DOMContentLoaded', function () {
 
@@ -66,6 +72,8 @@ document.addEventListener('DOMContentLoaded', function () {
     let currentDate = new Date();
     let currentHour = currentDate.getHours();
 
+
+    //if its later then 6 pm, using the night sky bg image
     if (document.getElementById('bodysection')) {
         if (6 <= currentHour && currentHour < 18) {
             document.getElementById('bodysection').classList.add('bg-bluesky')
@@ -74,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-
+    //provide functionality to the celsius and farenheight buttons
     let celsiusButton = document.getElementById('celsius');
     let farenButton = document.getElementById('farenheight');
 
@@ -103,7 +111,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-
+    //object for each city to be used by weather api
     const cityCoordinates = {
         halifax: { lat: 44.6488, lon: -63.5752},
         fredericton: { lat: 45.9454, lon: -66.6655},
@@ -120,7 +128,14 @@ document.addEventListener('DOMContentLoaded', function () {
         iqaluit: { lat: 63.7486, lon: -68.5197}
     };
 
-
+    /**
+     * Function to change location
+     * 
+     * Currently only works on home page
+     * 
+     * TODO: Have it update timezones, make sure it works for all pages
+     * 
+     */
     function changeLocation() {
         let locationElement = document.getElementById('location');
         let location = locationElement.value.toLowerCase();
@@ -132,12 +147,16 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    //setting the original location (halifax)
     changeLocation();
+    //event listener to call the function when the city is changed
     document.getElementById('location').addEventListener('change', changeLocation);
 
 
 
-
+    /**
+     * Function to update weather data using the free open weather map API to pull data from each location
+     */
     function updateWeatherData() {
         const openWeatherKey = '23c7e268a83f05cccf48e0358bce3257';
         const currentWeatherURL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${openWeatherKey}&units=${unit}`;
@@ -156,6 +175,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 let formattedTemp;
 
+                //Formatted temperature string
                 if (unit === 'metric') {
                     formattedTemp = `${temp}&deg;C`;
                 } else {
@@ -163,6 +183,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
 
 
+                //Inner HTML code for the home page
                 if (document.getElementById('weatherWidget')) {
                     const weatherWidget = document.getElementById('weatherWidget');
 
@@ -224,6 +245,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     }
                 }
 
+                //API call for the 36 hours page
                 fetch(hourWeatherURL)
                     .then(response => response.json())
                     .then(data => {
@@ -237,6 +259,8 @@ document.addEventListener('DOMContentLoaded', function () {
                             //set it blank
                             hourlyDiv.innerHTML = '';
 
+                            //establishing a loop to display each time limit for the next 36 hours. Since the API only allows every 3 hours of data,
+                            //we only loop through the first 12
                             data.list.slice(0, 12).forEach(hour => {
                                 const timestamp = hour.dt_txt;
 
@@ -303,6 +327,7 @@ document.addEventListener('DOMContentLoaded', function () {
     let nextButton = document.getElementById('nextButton');
     let prevButton = document.getElementById('prevButton');
 
+    //scroll button functionality
     if (hourlyDiv && nextButton && prevButton) {
 
         nextButton.addEventListener('click', () => {
@@ -325,7 +350,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-    //dropdown menu
+    //dropdown menu functionality
+    //only matters when screen is small enough
     let dropdownMenu = document.getElementById('dropdown');
 
     let menuToggleButton = document.getElementById('menuToggle');

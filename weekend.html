@@ -1,5 +1,9 @@
 <!--
-    Main Page for a simple weather app using html, tailwind css and javascript
+    Weekend page for weather app using html, tailwind css and javascript
+
+    In Progress
+
+
     Author: Alex Piercey
 -->
 <!DOCTYPE html>
@@ -74,7 +78,7 @@
         <div class="absolute right-0 z-10 hidden mt-2 origin-top-right bg-blue-900 rounded-md shadow-lg w-44 ring-1 ring-black ring-opacity-5 focus:outline-none"
             role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1" id="dropdown">
 
-            <a href="#"
+            <a href="./index.html"
                 class="block p-2 mx-3 my-2 text-white duration-300 border border-transparent focus:scale-105 focus:border-white"
                 role="menuitem" tabindex="-1" id="menu-item-0">Current</a>
             <a href="./36-hours.html"
@@ -95,8 +99,8 @@
         <!--Navigation bar - only displays when screen is wide enough-->
         <ul id="menu"
             class="absolute left-0 right-0 flex-wrap justify-center hidden text-white list-none sm:hidden md:hidden lg:flex lg:text-xl xl:text-3xl md:text-xl bottom-2 md:bottom-2">
-            <li class="p-2 mx-3 my-2 duration-300 scale-95 border white md:mx-10 md:my-0 md:p-4">
-                <button>CURRENT</button>
+            <li class="p-2 mx-3 my-2 duration-300 border border-transparent md:mx-10 md:my-0 hover:border-white md:p-4 hover:scale-95">
+                <button onclick="window.location.href='./index.html'">CURRENT</button>
             </li>
             <li
                 class="p-2 mx-3 my-2 duration-300 border border-transparent md:mx-10 md:my-0 hover:border-white md:p-4 hover:scale-95">
@@ -107,7 +111,7 @@
                 <button onclick="window.location.href='./8-days.html'">8 DAYS</button>
             </li>
             <li
-                class="p-2 mx-3 my-2 duration-300 border border-transparent md:mx-10 md:my-0 hover:border-white md:p-4 hover:scale-95">
+                class="p-2 mx-3 my-2 duration-300 scale-95 border white md:mx-10 md:my-0 md:p-4">
                 <button onclick="window.location.href='./weekend.html'">WEEKEND</button>
             </li>
         </ul>
@@ -120,16 +124,9 @@
     <div class="flex flex-col justify-center ">
 
         <!--Current weather-->
-        <section class="flex flex-col p-5 mx-10 my-10 text-white duration-300 rounded-3xl lg:mt-20" id="weatherWidget">
-
+        <section class="flex flex-col p-5 mx-10 my-10 text-white duration-300 rounded-3xl lg:mt-20">
+            <h1 class="text-8xl font-bold">In Progress<br>Come back later</h1>
         </section>
-
-
-        <!--NASA image of the day-->
-        <button class="flex flex-col items-center justify-between h-screen p-5 mx-10 my-10 text-white duration-300 bg-gray-900 lg:text-5xl rounded-3xl lg:my-20 hover:scale-95" id="aotd">
-            <p class="self-start text-2xl font-bold lg:text-3xl z-10">NASA's Image Of the Day</p>
-            <p class="hidden p-5 text-xl bg-gray-900 rounded-3xl bg-opacity-80 lg:text-2xl overflow-auto" id="imageDescription"></p>
-        </button>
 
     </div>
 
