@@ -1,0 +1,51 @@
+function updateDateTime() {
+        let currentDate = new Date();
+
+        //get all the components
+        dayDate = currentDate.getDate();
+        let numMonth = currentDate.getMonth();
+        const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        month = months[numMonth];
+
+
+        year = currentDate.getFullYear();
+        let hours = currentDate.getHours();
+
+        const weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+        let numDay = currentDate.getDay();
+        day = weekday[numberedDay];
+
+        //check whether we need am or pm
+        let amPm;
+        if (hours >= 12) {
+            amPm = "PM";
+        } else {
+            amPm = "AM"
+        }
+
+        //change the hours to the 12-hour formatt
+        newHours = hours % 12 || 12;
+        updatedTime = hours % 12 || 12;
+
+        //put a leading 0 on minutes if it is less then 10
+        let minutes = currentDate.getMinutes();
+        if (minutes < 10) {
+            minutes = '0' + minutes
+        }
+
+        //put a leading 0 on seconds if it is less than 10
+        let seconds = currentDate.getSeconds();
+        if (seconds < 10) {
+            seconds = '0' + seconds;
+        }
+
+      //  let time = document.getElementById('time');
+      //  time.innerHTML = `${newHours}:${minutes} ${amPm}`
+
+    }
+    
+    updateDateTime();
+
+    //calling the function every second so it updates
+    setInterval(updateDateTime, 1000);
