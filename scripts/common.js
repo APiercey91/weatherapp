@@ -10,7 +10,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-    let day, month, year, dayDate, lat, lon, updatedTime, numberedDay;
+    let day, month, year, dayDate, lat, lon, updatedTime;
+    const weekday = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
     /**
      * Using Date interface to display date and time
@@ -282,6 +283,9 @@ document.addEventListener('DOMContentLoaded', function () {
                                 const date = new Date(timestamp);
                                 let hours = date.getHours();
 
+                                console.log(hours)
+                                console.log(timestamp)
+
                                 let amPm;
                                 if (hours >= 12) {
                                     amPm = "PM";
@@ -291,13 +295,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
                                 newHours = hours % 12 || 12;
 
-                                const weekday = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-
                                 let numDay = date.getDay();
                                 let day = weekday[numDay];
-
-
-
 
                                 const temp = Math.ceil(hour.main.temp);
 
@@ -325,8 +324,60 @@ document.addEventListener('DOMContentLoaded', function () {
                             });
                         }
 
+                        let daily = document.getElementById('daily');
+
+                            if (daily) {
+                                prevDay = null;
+                                let count = 0;
+                                let tempSum = 0;
+                                daily.innerHTML = '';
+                                console.log(data);
+                                data.list.forEach(hour => {
+                                    const timestamp = hour.dt_txt;
+                                    const date = new Date(timestamp);
+                                    const numberedDay = date.getDay();
+                                    const day = weekday[numberedDay];
+                                    const weather = hour.weather[0].main;
+                                    let temp = Math.ceil(hour.main.temp);
+                                    let formattedTemp;
 
 
+                                    if (day !== prevDay && prevDay !== null) {
+
+                                        console.log("count: " + count)
+                                        console.log("temp sum:" + tempSum)
+                                        //calculate temperature
+                                        const averageTemp = Math.ceil(tempSum / count);
+                                        if (unit === 'metric') {
+                                            formattedTemp = `${averageTemp}&deg;C`;
+                                        } else {
+                                            formattedTemp = `${averageTemp}&deg;F`
+                                        }
+                    
+                                        //creating the div
+                                        const forecastEntry = document.createElement('div');
+                                        forecastEntry.innerHTML = `
+                                            <div class="border-4 p-5 border-white">
+                                                <div class="font-bold">${day}</div>
+                                                <br><div>Average Temp: ${formattedTemp}</div>
+                                            </div>`;
+                                        daily.appendChild(forecastEntry);
+                    
+                                        //reset counters
+                                        tempSum = 0;
+                                        count = 0;
+                                        
+                                    }
+
+                                    tempSum += temp;
+                                    count++;
+                                    prevDay = day;
+
+                                });
+
+
+                            }
+                            
 
                         
 
