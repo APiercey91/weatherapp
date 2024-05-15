@@ -265,8 +265,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 fetch(hourWeatherURL)
                     .then(response => response.json())
                     .then(data => {
-                        //console.log(data);
-
 
                         const hourlyDiv = document.getElementById('hourly');
 
@@ -283,8 +281,8 @@ document.addEventListener('DOMContentLoaded', function () {
                                 const date = new Date(timestamp);
                                 let hours = date.getHours();
 
-                                console.log(hours)
-                                console.log(timestamp)
+                                //console.log(hours)
+                                //console.log(timestamp)
 
                                 let amPm;
                                 if (hours >= 12) {
@@ -293,8 +291,10 @@ document.addEventListener('DOMContentLoaded', function () {
                                     amPm = "AM"
                                 }
 
+                                //converting to 12 hour time
                                 newHours = hours % 12 || 12;
 
+                                //converting to the day of the week instead of 0-6
                                 let numDay = date.getDay();
                                 let day = weekday[numDay];
 
@@ -302,14 +302,18 @@ document.addEventListener('DOMContentLoaded', function () {
 
                                 let formattedTemp;
 
+                                //formatting the temperature to use C or F
                                 if (unit === 'metric') {
                                     formattedTemp = `${temp}&deg;C`;
                                 } else {
                                     formattedTemp = `${temp}&deg;F`
                                 }
 
+                                //the weather for this 3-hour period
                                 const weather = hour.weather[0].main;
 
+
+                                //creating the a new div to enter the loop
                                 const forecastEntry = document.createElement('div');
                                 forecastEntry.innerHTML =
                                     `<div class="border-4 p-5 border-white">
@@ -324,6 +328,16 @@ document.addEventListener('DOMContentLoaded', function () {
                             });
                         }
 
+
+                        /**
+                         * Setting the 5-day forecast. Could not do 8 days, because the API only retrieves data for
+                         * the next 5 days
+                         * 
+                         * 
+                         * TODO: calculate the most common weather for each day (most likely using an array) 
+                         * and setting that as the weather for each day
+                         * 
+                         */
                         let daily = document.getElementById('daily');
 
                             if (daily) {
@@ -344,7 +358,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                                     if (day !== prevDay && prevDay !== null) {
 
-                                       // console.log("count: " + count)
+                                        //console.log("count: " + count)
                                         //console.log("temp sum:" + tempSum)
                                         //calculate temperature
                                         const averageTemp = Math.ceil(tempSum / count);
