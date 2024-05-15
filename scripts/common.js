@@ -344,8 +344,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
                                     if (day !== prevDay && prevDay !== null) {
 
-                                        console.log("count: " + count)
-                                        console.log("temp sum:" + tempSum)
+                                       // console.log("count: " + count)
+                                        //console.log("temp sum:" + tempSum)
                                         //calculate temperature
                                         const averageTemp = Math.ceil(tempSum / count);
                                         if (unit === 'metric') {
@@ -354,12 +354,33 @@ document.addEventListener('DOMContentLoaded', function () {
                                             formattedTemp = `${averageTemp}&deg;F`
                                         }
                     
+
+                                        console.log("weather length: " + weather.length)
+                                        /**get weather for the day-i can do this by putting the weather for each 3 hour period
+                                         * in an array and counting which one occurs the most
+                                         * 
+                                         * 
+                                         * look at console when trying to do this again
+                                         * 
+                                         */
+                                            let weatherArray;
+
+                                            for (let i=0; i < weather.length; i++) {
+                                                console.log(weather[i]);
+                                              //  if (weather[i]) {
+                                              //  weatherArray.push(weather[i]);
+                                          //  }
+                                            }
+
+
+
                                         //creating the div
                                         const forecastEntry = document.createElement('div');
                                         forecastEntry.innerHTML = `
                                             <div class="border-4 p-5 border-white">
-                                                <div class="font-bold">${day}</div>
-                                                <br><div>Average Temp: ${formattedTemp}</div>
+                                                <div class="font-bold">${day}<br><br></div>
+                                                <br><div>${weather}</div>
+                                                <div>${formattedTemp}</div>
                                             </div>`;
                                         daily.appendChild(forecastEntry);
                     
