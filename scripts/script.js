@@ -29,6 +29,11 @@ document.addEventListener('DOMContentLoaded', function () {
             aotd.style.backgroundRepeat = 'no-repeat';
             aotd.style.backgroundPosition = 'center bottom';
 
+            console.log(data.url);
+            console.log(image);
+            console.log(text);
+
+
             let imageDescription = document.getElementById('imageDescription');
                 
             //if the image of the day is a video, display it
