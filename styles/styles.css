@@ -52,3 +52,9 @@ Author: Alex Piercey
     background-size: cover;
     background-position: center;
 }
+
+.bg-weekend {
+    background-image: url('../images/weekend.gif');
+    background-size:cover;
+    background-position: center;
+}

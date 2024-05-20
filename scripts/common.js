@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     let day, month, year, dayDate, lat, lon, updatedTime;
     const weekday = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    const longWeekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
     /**
      * Using Date interface to display date and time
@@ -25,14 +26,11 @@ document.addEventListener('DOMContentLoaded', function () {
         const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
         month = months[numMonth];
 
-
         year = currentDate.getFullYear();
         let hours = currentDate.getHours();
 
-        const weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-
         let numDay = currentDate.getDay();
-        day = weekday[numDay];
+        day = longWeekday[numDay];
 
         //check whether we need am or pm
         let amPm;
@@ -329,6 +327,9 @@ document.addEventListener('DOMContentLoaded', function () {
                         }
 
 
+                        
+
+
                         /**
                          * Setting the 5-day forecast. Could not do 8 days, because the API only retrieves data for
                          * the next 5 days
@@ -341,7 +342,6 @@ document.addEventListener('DOMContentLoaded', function () {
                         let daily = document.getElementById('daily');
 
                         if (daily) {
-                            daily.scrollLeft = 0;
                             let prevDay = null;
                             let tempSum = 0;
                             let count = 0;
@@ -382,6 +382,8 @@ document.addEventListener('DOMContentLoaded', function () {
                                       <div>${formattedTemp}</div>
                                       </div>`;
                                         daily.appendChild(forecastEntry);
+
+
                                     }
 
                                     //reset counters
@@ -418,6 +420,80 @@ document.addEventListener('DOMContentLoaded', function () {
                                 }
                             });
                         }
+
+
+
+                            /**
+                             * Weekend page logic. The weather api only fetches data for the next 5 days, so on some days the data will not be available
+                             */
+                            let weekend = document.getElementById('weekend');
+                            if (weekend) {
+                                let prevDay = null;
+                                let tempSum = 0;
+                                let count = 0;
+                                weekend.innerHTML = '';
+
+                                data.list.forEach(hour => {
+                                const timestamp = hour.dt_txt;
+                                const date = new Date(timestamp);
+                                const numberedDay = date.getDay();
+                                const day = longWeekday[numberedDay];
+                                const temp = Math.ceil(hour.main.temp);
+
+                                    if (prevDay == null) {
+                                        prevDay = day;
+                                    }
+
+                                    if (day !== prevDay && (prevDay == "Saturday" || prevDay == "Sunday")) {
+                                        //calculating temp
+                                        if (count !== 0) {
+    
+                                            const averageTemp = Math.ceil(tempSum / count);
+                                            let formattedTemp;
+    
+                                            if (unit === 'metric') {
+                                                formattedTemp = `${averageTemp}&deg;C`;
+                                            } else {
+                                                formattedTemp = `${averageTemp}&deg;F`
+                                            }
+    
+                                            //creating the div
+                                            const forecastEntry = document.createElement('div');
+                                            forecastEntry.innerHTML = `
+                                          <div class="border-4 p-5 border-white backdrop-blur rounded-3xl mx-2 lg:mx-12">
+                                          <div class="font-bold pb-24">${prevDay}<br><br></div>
+                                          <div>${formattedTemp}</div>
+                                          </div>`;
+                                            weekend.appendChild(forecastEntry);
+    
+    
+                                        }
+    
+                                        //reset counters
+                                        tempSum = 0;
+                                        count = 0;
+                                    }
+                                   else if (prevDay !== "Saturday" || prevDay !== "Sunday") {
+                                        weekend.innerHTML = `
+                                        <div class="text-2xl border-2 m-10 border-white backdrop-blur rounded-3xl mx-2 lg:my-56 lg:text-6xl">
+                                        <p class="my-10 mx-5">Weekend data is unavailable on Monday and Tuesday</p>
+                                        </div>
+                                        `
+                                     }
+   
+                                    //update to current day
+                                    tempSum += temp;
+                                    count++;
+                                    prevDay = day;
+    
+
+
+                                });
+                            }
+
+
+
+
                     });
             });
     }

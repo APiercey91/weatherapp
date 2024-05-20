@@ -94,8 +94,7 @@
                 Hours</a>
             <a href="./8-days.html"
                 class="block p-2 mx-3 my-2 text-white duration-300 border border-transparent focus:scale-105 focus:border-white"
-                role="menuitem" tabindex="-1" id="menu-item-2">8
-                Days</a>
+                role="menuitem" tabindex="-1" id="menu-item-2">Daily</a>
             <a href="./weekend.html"
                 class="block p-2 mx-3 my-2 text-white duration-300 border border-transparent focus:scale-105 focus:border-white"
                 role="menuitem" tabindex="-1" id="menu-item-2">Weekend</a>
@@ -115,7 +114,7 @@
             </li>
             <li
                 class="p-2 mx-3 my-2 duration-300 border border-transparent md:mx-10 md:my-0 hover:border-white md:p-4 hover:scale-95">
-                <button onclick="window.location.href='./8-days.html'">8 DAYS</button>
+                <button onclick="window.location.href='./8-days.html'">DAILY</button>
             </li>
             <li
                 class="p-2 mx-3 my-2 duration-300 scale-95 border white md:mx-10 md:my-0 md:p-4">
@@ -130,7 +129,7 @@
 
     <div class="flex flex-col justify-center ">
 
-        <section class="border-red-900 border-4 bg-red-600 text-white rounded-3xl p-5 m-5">
+        <section class="border-red-900 border-4 bg-red-600 text-white rounded-3xl p-5 m-5 lg:mx-72">
             <p class="font-bold">Warning</p>
             <p>The weather API being used only fetches data for the next
                 5 days. It's possible that weather will not be available for 
@@ -141,8 +140,12 @@
         </section>
 
         <!--Current weather-->
-        <section class="flex flex-col p-5 mx-10 my-10 text-white duration-300 rounded-3xl lg:mt-20">
-            <h1 class="text-8xl font-bold">In Progress<br>Come back later</h1>
+
+
+        <section class="
+        text-white flex flex-row mx-10 my-10 bg-blue-400 p-6 rounded-3xl text-center 
+        text-5xl lg:text-6xl lg:mx-96 lg:py-12 items-center justify-center bg-weekend" id="weekend">
+            
         </section>
 
     </div>
