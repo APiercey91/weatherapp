@@ -1,7 +1,13 @@
 <!--
-   Page to display the weather for the next 8 days using html, tailwind css and javascript
+   Page to display daily temperature using html, tailwind css and javascript
 
-    In Progress
+   *The free version of the Open Weather Map API does not allow me to fetch the
+    daily weather for each day, it only lets me fetch the temperature every 
+    three hours. For the daily temperature, I took the average temperature of 
+    each day. It's possible that it will give a different temperature then what
+    will you see on The Weather Network or other verified weather sources. This 
+    is also why I cannot add the complete forecast for each day, as it would not
+    be very accurate.
 
     Author: Alex Piercey
 -->
@@ -88,8 +94,7 @@
                 Hours</a>
             <a href="./8-days.html"
                 class="block p-2 mx-3 my-2 text-white duration-300 border border-transparent focus:scale-105 focus:border-white"
-                role="menuitem" tabindex="-1" id="menu-item-2">8
-                Days</a>
+                role="menuitem" tabindex="-1" id="menu-item-2">Daily</a>
             <a href="./weekend.html"
                 class="block p-2 mx-3 my-2 text-white duration-300 border border-transparent focus:scale-105 focus:border-white"
                 role="menuitem" tabindex="-1" id="menu-item-2">Weekend</a>
@@ -109,7 +114,7 @@
                 <button onclick="window.location.href='./36-hours.html'">36 HOURS</button>
             </li>
             <li class="p-2 mx-3 my-2 duration-300 scale-95 border white md:mx-10 md:my-0 md:p-4">
-                <button onclick="window.location.href='./8-days.html'">8 DAYS</button>
+                <button onclick="window.location.href='./8-days.html'">DAILY</button>
             </li>
             <li
                 class="p-2 mx-3 my-2 duration-300 border border-transparent md:mx-10 md:my-0 hover:border-white md:p-4 hover:scale-95">
@@ -125,9 +130,9 @@
     <div class="flex flex-col justify-center">
 
         <!--Weather for the next 8 Days-->
-        <section class="flex  p-5 mx-10 my-10 text-white duration-300 rounded-3xl lg:mt-20 justify-center">
+        <section class="flex p-5 mx-10 my-10 text-white duration-300 rounded-3xl lg:mt-20 justify-center">
 
-            <div class="flex p-10 py-20 m-10 mx-2 space-x-5 overflow-auto text-3xl whitespace-nowrap lg:text-6xl lg:mx-10 justify-center bg-blue-400 rounded-3xl" id="daily"></div>
+            <div class="flex p-10 py-20 m-10 mx-2 space-x-5 overflow-x-auto text-3xl bg-daily whitespace-nowrap lg:text-6xl lg:mx-10  bg-blue-400 rounded-3xl" id="daily"></div>
 
         </section>
 

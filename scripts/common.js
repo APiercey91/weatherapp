@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function () {
         time.innerHTML = `${newHours}:${minutes} ${amPm}`
 
     }
-    
+
     updateDateTime();
 
     //calling the function every second so it updates
@@ -113,19 +113,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
     //object for each city to be used by weather api
     const cityCoordinates = {
-        halifax: { lat: 44.6488, lon: -63.5752, updatedTime: currentHour},
-        fredericton: { lat: 45.9454, lon: -66.6655, updatedTime: currentHour + 10},
-        stjohns: { lat: 47.5605, lon: -52.7128, updatedTime: currentHour},
-        charlottetown: { lat: 46.2388, lon: -63.1291, updatedTime: currentHour},
-        quebeccity: { lat: 46.8298, lon: -71.2540, updatedTime: currentHour - 1},
-        toronto: { lat: 43.70011, lon: -79.4163, updatedTime: currentHour - 1},
-        winnipeg: { lat: 49.8844, lon: -97.14704, updatedTime: currentHour - 2},
-        edmonton: { lat: 53.55014, lon: -113.46871, updatedTime: currentHour - 3},
-        victoria: { lat: 48.4359, lon: -123.35155, updatedTime: currentHour - 4},
-        regina: { lat: 50.45008, lon: -104.6178, updatedTime: currentHour - 3},
-        whitehorse: { lat: 60.71611, lon: -135.05375, updatedTime: currentHour - 4},
-        yellowknife: { lat: 62.4541, lon: -114.3724, updatedTime: currentHour - 3},
-        iqaluit: { lat: 63.7486, lon: -68.5197, updatedTime: currentHour - 1}
+        halifax: { lat: 44.6488, lon: -63.5752, updatedTime: currentHour },
+        fredericton: { lat: 45.9454, lon: -66.6655, updatedTime: currentHour + 10 },
+        stjohns: { lat: 47.5605, lon: -52.7128, updatedTime: currentHour },
+        charlottetown: { lat: 46.2388, lon: -63.1291, updatedTime: currentHour },
+        quebeccity: { lat: 46.8298, lon: -71.2540, updatedTime: currentHour - 1 },
+        toronto: { lat: 43.70011, lon: -79.4163, updatedTime: currentHour - 1 },
+        winnipeg: { lat: 49.8844, lon: -97.14704, updatedTime: currentHour - 2 },
+        edmonton: { lat: 53.55014, lon: -113.46871, updatedTime: currentHour - 3 },
+        victoria: { lat: 48.4359, lon: -123.35155, updatedTime: currentHour - 4 },
+        regina: { lat: 50.45008, lon: -104.6178, updatedTime: currentHour - 3 },
+        whitehorse: { lat: 60.71611, lon: -135.05375, updatedTime: currentHour - 4 },
+        yellowknife: { lat: 62.4541, lon: -114.3724, updatedTime: currentHour - 3 },
+        iqaluit: { lat: 63.7486, lon: -68.5197, updatedTime: currentHour - 1 }
     };
 
     /**
@@ -138,34 +138,34 @@ document.addEventListener('DOMContentLoaded', function () {
      */
 
     if (document.getElementById('location')) {
-    function changeLocation() {
-        
+        function changeLocation() {
 
-        let locationElement = document.getElementById('location');
-        let location = locationElement.value.toLowerCase();
-        console.log(location);
-        if (cityCoordinates.hasOwnProperty(location)) {
-            lat = cityCoordinates[location].lat;
-            lon = cityCoordinates[location].lon;
-            updatedTime = cityCoordinates[location].updatedTime;
-            let numberedDay = currentDate.getDay();
-            //check if time is over 24 (this would mean its the following day)
-            if (updatedTime >= 24) {
-                numberedDay = (numberedDay + 1) % 6;
+
+            let locationElement = document.getElementById('location');
+            let location = locationElement.value.toLowerCase();
+            console.log(location);
+            if (cityCoordinates.hasOwnProperty(location)) {
+                lat = cityCoordinates[location].lat;
+                lon = cityCoordinates[location].lon;
+                updatedTime = cityCoordinates[location].updatedTime;
+                let numberedDay = currentDate.getDay();
+                //check if time is over 24 (this would mean its the following day)
+                if (updatedTime >= 24) {
+                    numberedDay = (numberedDay + 1) % 6;
+                }
+                updatedTime = updatedTime % 24;
+                console.log(updatedTime);
+                updateWeatherData();
+                updateDateTime();
             }
-            updatedTime = updatedTime % 24;
-            console.log(updatedTime);
-            updateWeatherData();
-            updateDateTime();
         }
+
+        //setting the original location (halifax)
+        changeLocation();
+        //event listener to call the function when the city is changed
+        document.getElementById('location').addEventListener('change', changeLocation);
+
     }
-
-    //setting the original location (halifax)
-    changeLocation();
-    //event listener to call the function when the city is changed
-    document.getElementById('location').addEventListener('change', changeLocation);
-
-}
 
     /**
      * Function to update weather data using the free open weather map API to pull data from each location
@@ -316,7 +316,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                 //creating the a new div to enter the loop
                                 const forecastEntry = document.createElement('div');
                                 forecastEntry.innerHTML =
-                                    `<div class="border-4 p-5 border-white">
+                                    `<div class="border-4 p-5 border-white backdrop-blur">
                              <div class="font-bold">${day}</div>
                              <br><div>${newHours}${amPm}</div>
                              <br><div>${formattedTemp}</div>
@@ -340,91 +340,86 @@ document.addEventListener('DOMContentLoaded', function () {
                          */
                         let daily = document.getElementById('daily');
 
-                            if (daily) {
-                                prevDay = null;
-                                let count = 0;
-                                let tempSum = 0;
-                                daily.innerHTML = '';
-                                console.log(data);
-                                data.list.forEach(hour => {
-                                    const timestamp = hour.dt_txt;
-                                    const date = new Date(timestamp);
-                                    const numberedDay = date.getDay();
-                                    const day = weekday[numberedDay];
-                                    const weather = hour.weather[0].main;
-                                    let temp = Math.ceil(hour.main.temp);
-                                    let formattedTemp;
+                        if (daily) {
+                            daily.scrollLeft = 0;
+                            let prevDay = null;
+                            let tempSum = 0;
+                            let count = 0;
+                            daily.innerHTML = '';
+
+                            data.list.forEach((hour, index) => {
+                                const timestamp = hour.dt_txt;
+                                const date = new Date(timestamp);
+                                const numberedDay = date.getDay();
+                                const day = weekday[numberedDay];
+                                const temp = Math.ceil(hour.main.temp);
 
 
-                                    if (day !== prevDay && prevDay !== null) {
 
-                                        //console.log("count: " + count)
-                                        //console.log("temp sum:" + tempSum)
-                                        //calculate temperature
+                                if (prevDay === null) {
+                                    //initialize for first entry
+                                    prevDay = day;
+                                }
+
+                                if (day !== prevDay) {
+                                    //calculating temp
+                                    if (count !== 0) {
+
                                         const averageTemp = Math.ceil(tempSum / count);
+                                        let formattedTemp;
+
                                         if (unit === 'metric') {
                                             formattedTemp = `${averageTemp}&deg;C`;
                                         } else {
                                             formattedTemp = `${averageTemp}&deg;F`
                                         }
-                    
-
-                                        console.log("weather length: " + weather.length)
-                                        /**get weather for the day-i can do this by putting the weather for each 3 hour period
-                                         * in an array and counting which one occurs the most
-                                         * 
-                                         * 
-                                         * look at console when trying to do this again
-                                         * 
-                                         */
-                                            let weatherArray;
-
-                                            for (let i=0; i < weather.length; i++) {
-                                                console.log(weather[i]);
-                                              //  if (weather[i]) {
-                                              //  weatherArray.push(weather[i]);
-                                          //  }
-                                            }
-
-
 
                                         //creating the div
                                         const forecastEntry = document.createElement('div');
                                         forecastEntry.innerHTML = `
-                                            <div class="border-4 p-5 border-white">
-                                                <div class="font-bold">${day}<br><br></div>
-                                                <br><div>${weather}</div>
-                                                <div>${formattedTemp}</div>
-                                            </div>`;
+                                      <div class="border-4 p-5 border-white backdrop-blur rounded-3xl">
+                                      <div class="font-bold pb-24">${prevDay}<br><br></div>
+                                      <div>${formattedTemp}</div>
+                                      </div>`;
                                         daily.appendChild(forecastEntry);
-                    
-                                        //reset counters
-                                        tempSum = 0;
-                                        count = 0;
-                                        
                                     }
 
-                                    tempSum += temp;
-                                    count++;
-                                    prevDay = day;
+                                    //reset counters
+                                    tempSum = 0;
+                                    count = 0;
+                                }
 
-                                });
+                                //update to current day
+                                tempSum += temp;
+                                count++;
+                                prevDay = day;
 
+                                //last entry
+                                if (index === data.list.length - 1) {
+                                    if (count !== 0) {
+                                        const averageTemp = Math.ceil(tempSum / count);
+                                        let formattedTemp;
 
-                            }
-                            
+                                        if (unit === 'metric') {
+                                            formattedTemp = `${averageTemp}&deg;C`;
+                                        } else {
+                                            formattedTemp = `${averageTemp}&deg;F`
+                                        }
 
-                        
-
-
+                                        //create div for last entry
+                                        const forecastEntry = document.createElement('div');
+                                        forecastEntry.innerHTML = `
+                                      <div class="border-4 p-5 border-white backdrop-blur rounded-3xl">
+                                      <div class="font-bold pb-24">${day}<br><br></div>
+                                      <div>${formattedTemp}</div>
+                                      </div>`;
+                                        daily.appendChild(forecastEntry);
+                                    }
+                                }
+                            });
+                        }
                     });
-
-                    
-
-
             });
-
-
     }
 
     //initially loading the data, setting it to celsius
@@ -432,12 +427,13 @@ document.addEventListener('DOMContentLoaded', function () {
     celsiusButton.classList.add("font-bold");
     celsiusButton.classList.add("scale-125");
 
+    let daily = document.getElementById('daily');
     let hourlyDiv = document.getElementById('hourly');
     let nextButton = document.getElementById('nextButton');
     let prevButton = document.getElementById('prevButton');
 
     //scroll button functionality
-    if (hourlyDiv && nextButton && prevButton) {
+    if ((hourlyDiv || daily) && nextButton && prevButton) {
 
         nextButton.addEventListener('click', () => {
 

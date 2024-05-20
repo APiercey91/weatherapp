@@ -46,3 +46,9 @@ Author: Alex Piercey
     background-image: url('../images/darksky.gif');
     background-size:cover;
 }
+
+.bg-daily {
+    background-image: url('../images/dailygif.gif');
+    background-size: cover;
+    background-position: center;
+}

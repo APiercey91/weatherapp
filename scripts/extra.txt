@@ -49,3 +49,125 @@ function updateDateTime() {
 
     //calling the function every second so it updates
     setInterval(updateDateTime, 1000);
+
+
+
+
+
+
+    /**
+                         * Setting the 5-day forecast. Could not do 8 days, because the API only retrieves data for
+                         * the next 5 days
+                         * 
+                         * 
+                         * TODO: calculate the most common weather for each day (most likely using an array) 
+                         * and setting that as the weather for each day
+                         * 
+                         */
+                        let daily = document.getElementById('daily');
+
+                            if (daily) {
+                                prevDay = null;
+                                let count = 0;
+                                let tempSum = 0;
+                                daily.innerHTML = '';
+                                console.log(data);
+
+                                const forecastEntry = document.createElement('div');
+                                forecastEntry.innerHTML = `
+                                    <div class="border-4 p-5 border-white">
+                                        <div class="font-bold">${day}<br><br></div>
+                                        <br><div>${weather}</div>
+                                        <div>${formattedTemp}</div>
+                                    </div>`;
+                                daily.appendChild(forecastEntry);
+
+
+                                data.list.forEach(hour => {
+                                    const timestamp = hour.dt_txt;
+                                    const date = new Date(timestamp);
+                                    const numberedDay = date.getDay();
+                                    const day = weekday[numberedDay];
+                                    const weather = hour.weather[0].main;
+                                    let temp = Math.ceil(hour.main.temp);
+                                    let formattedTemp;
+
+
+                    
+
+                                    // && prevDay !== null
+                                    if (day !== prevDay && prevDay !== null) {
+
+                                        //console.log("count: " + count)
+                                        //console.log("temp sum:" + tempSum)
+                                        //calculate temperature
+                                        const averageTemp = Math.ceil(tempSum / count);
+                                        if (unit === 'metric') {
+                                            formattedTemp = `${averageTemp}&deg;C`;
+                                        } else {
+                                            formattedTemp = `${averageTemp}&deg;F`
+                                        }
+                    
+
+                                        console.log("weather length: " + weather.length)
+                                        /**get weather for the day-i can do this by putting the weather for each 3 hour period
+                                         * in an array and counting which one occurs the most
+                                         * 
+                                         * 
+                                         * look at console when trying to do this again
+                                         * 
+                                         */
+                                            let weatherArray;
+
+                                            for (let i=0; i < weather.length; i++) {
+                                                console.log(weather[i]);
+                                              //  if (weather[i]) {
+                                              //  weatherArray.push(weather[i]);
+                                          //  }
+                                            }
+
+
+
+                                        //creating the div
+                                        const forecastEntry = document.createElement('div');
+                                        forecastEntry.innerHTML = `
+                                            <div class="border-4 p-5 border-white">
+                                                <div class="font-bold">${day}<br><br></div>
+                                                <br><div>${weather}</div>
+                                                <div>${formattedTemp}</div>
+                                            </div>`;
+                                        daily.appendChild(forecastEntry);
+
+
+                                    console.log("Day: " + day)
+                                    console.log("temperature sum: " + tempSum)
+                                    console.log("count: " + count)
+                    
+                                        //reset counters
+                                        tempSum = 0;
+                                        count = 0;
+                                        
+                                    }
+
+                                    tempSum += temp;
+                                    count++;
+                                    prevDay = day;
+
+                                });
+
+
+                            }
+                            
+
+                        
+
+
+                    });
+
+                    
+
+
+            });
+
+
+    }
