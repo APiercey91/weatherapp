@@ -58,3 +58,19 @@ Author: Alex Piercey
     background-size:cover;
     background-position: center;
 }
+
+
+    /* Custom scrollbar styling */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 12px; /* width of the entire scrollbar */
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent; /* color of the tracking area */
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: rgb(30 58 138); /* color of the scroll thumb */
+    border-radius: 20px; /* roundness of the scroll thumb */
+    border: 3px solid #f4f4f4; /* creates padding around scroll thumb */
+}

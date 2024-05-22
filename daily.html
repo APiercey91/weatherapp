@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="./styles/styles.css">
     <link rel="website icon" type="jpg" href="./images/weathericon.png">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <title>Weather</title>
+    <title>MyWeather</title>
 </head>
 
 <body class="bg-blue-900">
@@ -68,7 +68,7 @@
         <!--original: bg-cyan-700 good colors: blue-950 sky-950-->
         <h1
             class="absolute text-5xl font-bold text-white lg:text-4xl md:text-6xl top-2 md:top-4 left-2 md:left-4 xl:text-5xl">
-            Weather</h1>
+            MyWeather</h1>
 
         <!--Dropdown menu button-->
         <div class="absolute lg:hidden top-2 right-2">
@@ -92,12 +92,12 @@
                 class="block p-2 mx-3 my-2 text-white duration-300 border border-transparent focus:scale-105 focus:border-white"
                 role="menuitem" tabindex="-1" id="menu-item-1">36
                 Hours</a>
-            <a href="./8-days.html"
+            <a href="./daily.html"
                 class="block p-2 mx-3 my-2 text-white duration-300 border border-transparent focus:scale-105 focus:border-white"
                 role="menuitem" tabindex="-1" id="menu-item-2">Daily</a>
-            <a href="./weekend.html"
+            <a href="./about.html"
                 class="block p-2 mx-3 my-2 text-white duration-300 border border-transparent focus:scale-105 focus:border-white"
-                role="menuitem" tabindex="-1" id="menu-item-2">Weekend</a>
+                role="menuitem" tabindex="-1" id="menu-item-2">About</a>
 
         </div>
 
@@ -114,11 +114,11 @@
                 <button onclick="window.location.href='./36-hours.html'">36 HOURS</button>
             </li>
             <li class="p-2 mx-3 my-2 duration-300 scale-95 border white md:mx-10 md:my-0 md:p-4">
-                <button onclick="window.location.href='./8-days.html'">DAILY</button>
+                <button onclick="window.location.href='./daily.html'">DAILY</button>
             </li>
             <li
                 class="p-2 mx-3 my-2 duration-300 border border-transparent md:mx-10 md:my-0 hover:border-white md:p-4 hover:scale-95">
-                <button onclick="window.location.href='./weekend.html'">WEEKEND</button>
+                <button onclick="window.location.href='./about.html'">ABOUT</button>
             </li>
         </ul>
 
@@ -132,8 +132,7 @@
         <!--Weather for the next 8 Days-->
         <section class="flex p-5 mx-10 my-10 text-white duration-300 rounded-3xl lg:mt-20 justify-center">
 
-            <div class="flex p-10 py-20 m-10 mx-2 space-x-5 overflow-x-auto text-3xl bg-daily whitespace-nowrap lg:text-6xl lg:mx-10  bg-blue-400 rounded-3xl" id="daily"></div>
-
+            <div class="flex px-20 py-20 m-10 mx-2 space-x-5 overflow-auto custom-scrollbar text-3xl bg-daily whitespace-nowrap lg:text-6xl lg:mx-10  bg-blue-400 rounded-3xl" id="daily"></div>
         </section>
 
     </div>
