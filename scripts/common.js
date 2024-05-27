@@ -10,9 +10,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-    let day, month, year, dayDate, lat, lon, updatedTime;
+    let day, month, year, dayDate, lat, lon, updatedTime, timeDiff;
     const weekday = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
     const longWeekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
     /**
      * Using Date interface to display date and time
@@ -23,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
         //get all the components
         dayDate = currentDate.getDate();
         let numMonth = currentDate.getMonth();
-        const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        
         month = months[numMonth];
 
         year = currentDate.getFullYear();
@@ -110,21 +111,37 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     //object for each city to be used by weather api
+    // const cityCoordinates = {
+    //     halifax: { lat: 44.6488, lon: -63.5752, updatedTime: currentHour },
+    //     fredericton: { lat: 45.9454, lon: -66.6655, updatedTime: currentHour + 10 },
+    //     stjohns: { lat: 47.5605, lon: -52.7128, updatedTime: currentHour },
+    //     charlottetown: { lat: 46.2388, lon: -63.1291, updatedTime: currentHour },
+    //     quebeccity: { lat: 46.8298, lon: -71.2540, updatedTime: currentHour - 1 },
+    //     toronto: { lat: 43.70011, lon: -79.4163, updatedTime: currentHour - 1 },
+    //     winnipeg: { lat: 49.8844, lon: -97.14704, updatedTime: currentHour - 2 },
+    //     edmonton: { lat: 53.55014, lon: -113.46871, updatedTime: currentHour - 3 },
+    //     victoria: { lat: 48.4359, lon: -123.35155, updatedTime: currentHour - 4 },
+    //     regina: { lat: 50.45008, lon: -104.6178, updatedTime: currentHour - 3 },
+    //     whitehorse: { lat: 60.71611, lon: -135.05375, updatedTime: currentHour - 4 },
+    //     yellowknife: { lat: 62.4541, lon: -114.3724, updatedTime: currentHour - 3 },
+    //     iqaluit: { lat: 63.7486, lon: -68.5197, updatedTime: currentHour - 1 }
+    // };
+
     const cityCoordinates = {
-        halifax: { lat: 44.6488, lon: -63.5752, updatedTime: currentHour },
-        fredericton: { lat: 45.9454, lon: -66.6655, updatedTime: currentHour + 10 },
-        stjohns: { lat: 47.5605, lon: -52.7128, updatedTime: currentHour },
-        charlottetown: { lat: 46.2388, lon: -63.1291, updatedTime: currentHour },
-        quebeccity: { lat: 46.8298, lon: -71.2540, updatedTime: currentHour - 1 },
-        toronto: { lat: 43.70011, lon: -79.4163, updatedTime: currentHour - 1 },
-        winnipeg: { lat: 49.8844, lon: -97.14704, updatedTime: currentHour - 2 },
-        edmonton: { lat: 53.55014, lon: -113.46871, updatedTime: currentHour - 3 },
-        victoria: { lat: 48.4359, lon: -123.35155, updatedTime: currentHour - 4 },
-        regina: { lat: 50.45008, lon: -104.6178, updatedTime: currentHour - 3 },
-        whitehorse: { lat: 60.71611, lon: -135.05375, updatedTime: currentHour - 4 },
-        yellowknife: { lat: 62.4541, lon: -114.3724, updatedTime: currentHour - 3 },
-        iqaluit: { lat: 63.7486, lon: -68.5197, updatedTime: currentHour - 1 }
-    };
+        halifax: { lat: 44.6488, lon: -63.5752, timeDiff: 0 },
+        fredericton: { lat: 45.9454, lon: -66.6655, timeDiff: 10 },
+        stjohns: { lat: 47.5605, lon: -52.7128, timeDiff: 0 },
+        charlottetown: { lat: 46.2388, lon: -63.1291, timeDiff: 0 },
+        quebeccity: { lat: 46.8298, lon: -71.2540, timeDiff: -1  },
+        toronto: { lat: 43.70011, lon: -79.4163, timeDiff: -1 },
+        winnipeg: { lat: 49.8844, lon: -97.14704, timeDiff: -2 },
+        edmonton: { lat: 53.55014, lon: -113.46871, timeDiff: -3 },
+        victoria: { lat: 48.4359, lon: -123.35155, timeDiff: -4 },
+        regina: { lat: 50.45008, lon: -104.6178, timeDiff: -3 },
+        whitehorse: { lat: 60.71611, lon: -135.05375, timeDiff: -4 },
+        yellowknife: { lat: 62.4541, lon: -114.3724, timeDiff: -3 },
+        iqaluit: { lat: 63.7486, lon: -68.5197, timeDiff: -1 }
+    }
 
     /**
      * Function to change location
@@ -147,19 +164,23 @@ document.addEventListener('DOMContentLoaded', function () {
                 lon = cityCoordinates[location].lon;
                 updatedTime = cityCoordinates[location].updatedTime;
                 let numberedDay = currentDate.getDay();
+                timeDiff += cityCoordinates[location].timeDiff;
+
+
                 //check if time is over 24 (this would mean its the following day)
-                if (updatedTime >= 24) {
-                    numberedDay = (numberedDay + 1) % 6;
-                }
-                updatedTime = updatedTime % 24;
-                console.log(updatedTime);
+               // if (updatedTime >= 24) {
+               //     numberedDay = (numberedDay + 1) % 6;
+              //  }
+                //updatedTime = updatedTime % 24;
+
                 updateWeatherData();
                 updateDateTime();
+                
             }
         }
 
         //setting the original location (halifax)
-        changeLocation();
+        changeLocation(newHours);
         //event listener to call the function when the city is changed
         document.getElementById('location').addEventListener('change', changeLocation);
 
@@ -169,8 +190,8 @@ document.addEventListener('DOMContentLoaded', function () {
      * Function to update weather data using the free open weather map API to pull data from each location
      */
     function updateWeatherData() {
-        lat = 44.6488;
-        lon = -63.5752;
+        //lat = 44.6488;
+        //lon = -63.5752;
         const openWeatherKey = '23c7e268a83f05cccf48e0358bce3257';
         const currentWeatherURL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${openWeatherKey}&units=${unit}`;
         const hourWeatherURL = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${openWeatherKey}&units=${unit}`;
@@ -273,14 +294,20 @@ document.addEventListener('DOMContentLoaded', function () {
 
                             //establishing a loop to display each time limit for the next 36 hours. Since the API only allows every 3 hours of data,
                             //we only loop through the first 12
-                            data.list.slice(0, 12).forEach(hour => {
+                            data.list.slice(0, 12).forEach(hour => {      
                                 const timestamp = hour.dt_txt;
 
                                 const date = new Date(timestamp);
                                 let hours = date.getHours();
 
-                                //console.log(hours)
-                                //console.log(timestamp)
+
+                               // console.log(updatedTime);
+                                console.log(newHours);
+                                console.log(hours);
+
+                                hours += timeDiff;
+
+                                console.log(hours);
 
                                 let amPm;
                                 if (hours >= 12) {
@@ -519,24 +546,33 @@ document.addEventListener('DOMContentLoaded', function () {
     let nasaDesc = document.getElementById('nasaDescription');
 
 
-    htmlLiItem.addEventListener('click', function () {
-        displayDesc(htmlLiItem, htmlDesc);
-    });
+    if (htmlLiItem) {
+        htmlLiItem.addEventListener('click', function () {
+            displayDesc(htmlLiItem, htmlDesc);
+        });
+    }
 
-    tailwindLiItem.addEventListener('click', function() {
-        displayDesc(tailwindLiItem, tailwindDesc);
-    });
+    if (tailwindLiItem) {
+        tailwindLiItem.addEventListener('click', function () {
+            displayDesc(tailwindLiItem, tailwindDesc);
+        });
+    }
 
-    jsLiItem.addEventListener('click', function() {
-        displayDesc(jsLiItem, jsDesc);
-    });
+    if (jsLiItem) {
+        jsLiItem.addEventListener('click', function () {
+            displayDesc(jsLiItem, jsDesc);
+        });
+    }
 
-    owmLiItem.addEventListener('click', function() {
-      displayDesc(owmLiItem, owmDesc);
-    });
+    if (owmLiItem) {
+        owmLiItem.addEventListener('click', function () {
+            displayDesc(owmLiItem, owmDesc);
+        });
+    }
 
-    nasaLiItem.addEventListener('click', function() {
-      displayDesc(nasaLiItem, nasaDesc);
-    });
-
+    if (nasaLiItem) {
+        nasaLiItem.addEventListener('click', function () {
+            displayDesc(nasaLiItem, nasaDesc);
+        });
+    }
 });
