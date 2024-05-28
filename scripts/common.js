@@ -190,8 +190,8 @@ document.addEventListener('DOMContentLoaded', function () {
      * Function to update weather data using the free open weather map API to pull data from each location
      */
     function updateWeatherData() {
-        //lat = 44.6488;
-        //lon = -63.5752;
+        lat = 44.6488;
+        lon = -63.5752;
         const openWeatherKey = '23c7e268a83f05cccf48e0358bce3257';
         const currentWeatherURL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${openWeatherKey}&units=${unit}`;
         const hourWeatherURL = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${openWeatherKey}&units=${unit}`;
@@ -305,7 +305,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                 console.log(newHours);
                                 console.log(hours);
 
-                                hours += timeDiff;
+                                //hours += timeDiff;
 
                                 console.log(hours);
 
